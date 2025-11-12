@@ -8,7 +8,9 @@
       "Bash(curl:*)",
       "WebFetch(domain:ochlikbygg.se)",
       "Bash(gh --version:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Ochlik Bygg AB website prototypes\n\nThis repository contains a React-based website showcase for Ochlik Bygg AB, a Swedish construction company, featuring three distinct design prototypes (Modern, Bold, and Classic) plus HTML prototypes.\n\nGenerated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
