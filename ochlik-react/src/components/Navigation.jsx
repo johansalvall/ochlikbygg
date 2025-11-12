@@ -1,25 +1,63 @@
 import { motion } from 'framer-motion'
+import { AppBar, Toolbar, Box, Link, Container } from '@mui/material'
 
 const Navigation = () => {
   return (
-    <motion.nav
-      className="nav"
+    <AppBar
+      position="sticky"
+      component={motion.nav}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      sx={{ bgcolor: 'secondary.main' }}
     >
-      <div className="nav-container">
-        <div className="logo">
-          <img src="/images/logo.gif" alt="Ochlik Bygg AB" />
-        </div>
-        <ul className="nav-links">
-          <li><a href="#hem">HEM</a></li>
-          <li><a href="#tjanster">TJÄNSTER</a></li>
-          <li><a href="#om-oss">OM OSS</a></li>
-          <li><a href="#kontakt">KONTAKT</a></li>
-        </ul>
-      </div>
-    </motion.nav>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+          <Box>
+            <img
+              src="/images/logo.gif"
+              alt="Ochlik Bygg AB"
+              style={{
+                height: '55px',
+                width: 'auto',
+                filter: 'brightness(0) invert(1)'
+              }}
+            />
+          </Box>
+          <Box sx={{ display: 'flex', gap: { xs: 2, md: 4 } }}>
+            {['HEM', 'TJÄNSTER', 'OM OSS', 'KONTAKT'].map((text, index) => (
+              <Link
+                key={index}
+                href={`#${text === 'HEM' ? 'hem' : text === 'TJÄNSTER' ? 'tjanster' : text === 'OM OSS' ? 'om-oss' : 'kontakt'}`}
+                sx={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  fontWeight: 600,
+                  fontSize: { xs: '0.8rem', md: '0.9rem' },
+                  letterSpacing: '1px',
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '-5px',
+                    left: 0,
+                    width: 0,
+                    height: '3px',
+                    bgcolor: 'primary.main',
+                    transition: 'width 0.3s',
+                  },
+                  '&:hover::after': {
+                    width: '100%',
+                  },
+                }}
+              >
+                {text}
+              </Link>
+            ))}
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   )
 }
 

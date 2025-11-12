@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Box, Container, Grid, Typography } from '@mui/material'
 import { FaHardHat, FaTools, FaHome, FaShieldAlt, FaWindowMaximize, FaCog } from 'react-icons/fa'
 import SectionTitle from './SectionTitle'
 
@@ -27,31 +28,54 @@ const Services = () => {
   ]
 
   return (
-    <section className="services" id="tjanster">
-      <div className="services-container">
+    <Box id="tjanster" sx={{ py: 10, bgcolor: 'background.paper' }}>
+      <Container maxWidth="lg">
         <SectionTitle title="VÅRA TJÄNSTER" />
-        <motion.div
-          className="services-grid"
+        <Grid
+          container
+          spacing={3}
+          component={motion.div}
           variants={stagger}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
+          sx={{ justifyContent: 'center' }}
         >
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="service-box"
-              variants={fadeInUp}
-              whileHover={{ y: -10, borderBottomColor: "#ff6b35" }}
-            >
-              <div className="service-icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <p>{service.desc}</p>
-            </motion.div>
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Box
+                component={motion.div}
+                variants={fadeInUp}
+                whileHover={{ y: -10 }}
+                sx={{
+                  bgcolor: 'white',
+                  p: 4,
+                  textAlign: 'center',
+                  height: '100%',
+                  transition: 'all 0.3s',
+                  borderBottom: '4px solid transparent',
+                  maxWidth: '350px',
+                  mx: 'auto',
+                  '&:hover': {
+                    borderBottomColor: 'primary.main',
+                  }
+                }}
+              >
+                <Box sx={{ fontSize: '3.5rem', mb: 2, color: 'primary.main' }}>
+                  {service.icon}
+                </Box>
+                <Typography variant="h4" sx={{ mb: 2 }}>
+                  {service.title}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {service.desc}
+                </Typography>
+              </Box>
+            </Grid>
           ))}
-        </motion.div>
-      </div>
-    </section>
+        </Grid>
+      </Container>
+    </Box>
   )
 }
 

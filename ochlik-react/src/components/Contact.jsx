@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Box, Container, Grid, Card, CardContent, Typography, Link } from '@mui/material'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram } from 'react-icons/fa'
 import SectionTitle from './SectionTitle'
 
@@ -53,33 +54,75 @@ const Contact = () => {
   ]
 
   return (
-    <section className="contact" id="kontakt">
-      <div className="contact-container">
+    <Box id="kontakt" sx={{ py: 10, bgcolor: 'background.paper' }}>
+      <Container maxWidth="lg">
         <SectionTitle title="KONTAKTA OSS" />
-        <motion.div
-          className="contact-grid"
+        <Grid
+          container
+          spacing={4}
+          component={motion.div}
           variants={stagger}
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
+          sx={{ justifyContent: 'center' }}
         >
           {contactInfo.map((info, index) => (
-            <motion.div key={index} className="contact-card" variants={fadeInUp}>
-              <h3>{info.icon} {info.title}</h3>
-              {info.lines.map((line, lineIndex) => (
-                <p key={lineIndex}>
-                  {line.link ? (
-                    <a href={line.link}>{line.text}</a>
-                  ) : (
-                    line.text
-                  )}
-                </p>
-              ))}
-            </motion.div>
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Card
+                component={motion.div}
+                variants={fadeInUp}
+                sx={{
+                  height: '100%',
+                  textAlign: 'center',
+                  borderTop: '4px solid',
+                  borderColor: 'primary.main',
+                  maxWidth: '280px',
+                  mx: 'auto',
+                }}
+              >
+                <CardContent sx={{ p: 4 }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      mb: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 1,
+                      fontSize: '1.3rem',
+                    }}
+                  >
+                    {info.icon} {info.title}
+                  </Typography>
+                  {info.lines.map((line, lineIndex) => (
+                    <Typography key={lineIndex} variant="body1" sx={{ my: 1 }}>
+                      {line.link ? (
+                        <Link
+                          href={line.link}
+                          sx={{
+                            color: 'primary.main',
+                            textDecoration: 'none',
+                            fontWeight: 600,
+                            '&:hover': {
+                              color: 'text.primary',
+                            }
+                          }}
+                        >
+                          {line.text}
+                        </Link>
+                      ) : (
+                        line.text
+                      )}
+                    </Typography>
+                  ))}
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </motion.div>
-      </div>
-    </section>
+        </Grid>
+      </Container>
+    </Box>
   )
 }
 
