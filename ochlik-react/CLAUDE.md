@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React-based website showcase for **Ochlik Bygg AB**, a Swedish construction company. The application presents **three distinct design prototypes** that the client can choose from, plus a landing page that serves as a design selector.
+This is a React-based website for **Ochlik Bygg AB**, a Swedish construction company. The application features a bold, professional design with dark backgrounds and striking orange accents (#ff6b35).
 
 ## Development Commands
 
@@ -24,74 +24,37 @@ npm run lint
 
 ## Architecture
 
-### Core Concept: Multi-Prototype System
+### Technology Stack
+- **React** - UI library
+- **Vite** - Build tool and dev server
+- **Framer Motion** - Animation library
+- **React Icons** - Icon components
 
-The app uses a **conditional rendering pattern** where `App.jsx` acts as both:
-1. **Landing page** (when `currentPrototype === null`) - Showcases company info and lets users explore designs
-2. **Prototype container** (when prototype is selected) - Renders the chosen prototype with a switcher bar
-
-### State Management Pattern
-
-```javascript
-// In App.jsx
-const [currentPrototype, setCurrentPrototype] = useState(null)
-
-// null = Landing page
-// 'modern' | 'bold' | 'classic' = Selected prototype
-```
-
-### Prototype Structure
-
-Each prototype lives in `src/prototypes/{Name}/`:
-- `{Name}Prototype.jsx` - React component (self-contained, no props)
-- `{Name}.css` - Scoped CSS (uses specific class prefixes to avoid conflicts)
-
-**Key principle**: Each prototype is completely independent and can be viewed/edited without affecting others.
-
-### Component Hierarchy
+### Component Structure
 
 ```
-App.jsx (root state)
-├── Landing Page (when prototype === null)
-│   ├── Hero Section (with logo)
-│   ├── Values Section
-│   ├── References Section (project showcase)
-│   ├── Prototype Selector Buttons
-│   ├── Contact Section
-│   └── Footer
-└── Prototype View (when prototype selected)
-    ├── Prototype Selector (fixed top-right, with back button)
-    └── One of:
-        ├── ModernPrototype.jsx
-        ├── BoldPrototype.jsx
-        └── ClassicPrototype.jsx
+App.jsx (main component)
+├── Navigation (fixed navbar)
+├── Hero Section (with stats)
+├── Services Section (6 services)
+├── References Section (project showcase)
+├── Why Us Section (company history)
+├── CTA Section (call to action)
+├── Contact Section (contact info)
+└── Footer
 ```
 
-### Design Themes
+### Design Theme
 
-Each prototype has distinct characteristics:
-
-**Modern (Minimalist)**
-- Color: Olive green (#6b8e23)
-- Style: Clean, white backgrounds, subtle borders
-- Typography: Sans-serif throughout
-- Animations: Smooth fadeInUp, stagger effects
-
-**Bold (Professional)**
-- Color: Orange (#ff6b35) on dark backgrounds
-- Style: High contrast, dramatic
+**Bold & Professional**
+- Colors: Dark backgrounds (#1a1a1a) with bright orange accents (#ff6b35)
+- Style: High contrast, dramatic impact
 - Typography: Uppercase headings, bold weights
-- Animations: Slide-up overlays, strong transforms
-
-**Classic (Trustworthy)**
-- Color: Earth tones (browns #5d4037, olive #6b8e23)
-- Style: Traditional borders, warm backgrounds
-- Typography: Serif for headings, sans-serif for body
-- Animations: Gentle fades, scale effects
+- Animations: Smooth scroll-triggered animations with Framer Motion
 
 ### Animation Patterns
 
-All prototypes use **Framer Motion** with consistent patterns:
+All sections use **Framer Motion** with consistent patterns:
 
 ```javascript
 // Standard fade-in animation
@@ -105,7 +68,7 @@ const fadeInUp = {
 const stagger = {
   animate: {
     transition: {
-      staggerChildren: 0.1 // or 0.15, 0.2 depending on prototype
+      staggerChildren: 0.15
     }
   }
 }
@@ -130,25 +93,25 @@ Static assets are in `public/images/`:
 
 Images are referenced as `/images/filename.ext` (Vite handles the public folder automatically).
 
-### Shared Sections Across Prototypes
+### Sections Overview
 
-Each prototype includes these sections (with different styling):
-1. **Navigation** - Fixed or sticky nav with logo
-2. **Hero** - Large banner with company tagline
-3. **Values** - 3 core values (Trygghet, Ansvar, Kunskap)
-4. **Services** - List of construction services offered
-5. **References** - Project showcase with 3 example projects
-6. **About** - Company history and information
-7. **Contact** - Contact details (phone, email, address)
-8. **Footer** - Copyright and additional info
+Each section includes:
+
+1. **Navigation** - Sticky nav with logo and links (HEM, TJÄNSTER, OM OSS, KONTAKT)
+2. **Hero** - Large banner with company tagline and statistics grid
+3. **Services** - 6 core services (Nybyggnation, Renovering, Tillbyggnad, Takarbeten, Fönsterinstallation, Specialarbeten)
+4. **References** - 3 project examples with hover effects
+5. **Why Us** - Company history and features
+6. **CTA** - Call-to-action section with gradient background
+7. **Contact** - Contact details (phone, email, address, social media)
+8. **Footer** - Copyright information
 
 ### CSS Organization
 
 - `index.css` - Global resets
-- `App.css` - Landing page styles + prototype selector styles
-- `{Prototype}.css` - Prototype-specific styles with namespaced classes
+- `App.css` - All website styles
 
-**Important**: Each prototype CSS uses a root class (`.modern-prototype`, `.bold-prototype`, `.classic-prototype`) to scope all styles and prevent conflicts.
+**Important**: All styles are scoped under the `.app` class to ensure proper organization.
 
 ## Company Information
 
@@ -166,17 +129,18 @@ When editing content, use this official information:
 ## Key Development Notes
 
 ### Adding New Sections
-When adding a new section to prototypes:
-1. Add to all three prototypes to maintain feature parity
-2. Use each prototype's color scheme and animation patterns
+When adding a new section:
+1. Use the orange (#ff6b35) accent color
+2. Follow the animation patterns (fadeInUp, stagger)
 3. Ensure mobile responsiveness (breakpoint: 968px)
-4. Add to landing page if it's a showcase-worthy feature
+4. Maintain consistent spacing (padding: 6rem 2rem)
 
-### Styling Conflicts
-If styles aren't applying correctly:
-- Check that the root prototype class is present (e.g., `.modern-prototype`)
-- Verify CSS specificity (prototype styles should be scoped under root class)
-- Check browser DevTools for conflicting inherited styles
+### Styling Guidelines
+- Primary brand color: #ff6b35 (orange)
+- Dark background: #1a1a1a
+- Light background: #f5f5f5
+- Text on dark: white or #ccc
+- Text on light: #1a1a1a or #555
 
 ### Hot Module Replacement
 Vite's HMR is enabled. When editing:
@@ -185,13 +149,41 @@ Vite's HMR is enabled. When editing:
 - Changes to `App.jsx` may require full reload
 
 ### Responsive Design
-All prototypes use mobile-first responsive design:
+Mobile-first responsive design:
 - Mobile: < 768px
 - Desktop: > 968px
 - Use `@media (max-width: 968px)` for mobile breakpoints
+
+Key responsive changes:
+- Hero: Single column layout on mobile
+- Navigation: Reduced spacing on mobile
+- Stats: Maintain 2-column grid even on mobile
+- Content: Full width with reduced font sizes
 
 ### Framer Motion Performance
 For optimal performance:
 - Use `viewport={{ once: true }}` for scroll-triggered animations (prevents re-triggering)
 - Use `whileInView` instead of always-active animations
 - Keep `staggerChildren` delays reasonable (0.1-0.2s)
+
+## Production Deployment
+
+### Building for Production
+```bash
+npm run build
+```
+
+The built files will be in the `dist/` folder, ready to deploy to any static hosting service.
+
+### Deployment Options
+- Vercel
+- Netlify
+- GitHub Pages
+- AWS S3
+- Any static hosting provider
+
+### Environment Considerations
+- Ensure all image paths are correct (`/images/...`)
+- Test all animations on production build
+- Verify mobile responsiveness
+- Check that all links work correctly

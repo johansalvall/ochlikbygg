@@ -1,31 +1,17 @@
-# Ochlik Bygg - React Website Prototypes
+# Ochlik Bygg - Professional Construction Website
 
-Three modern, fully responsive website prototypes for Ochlik Bygg AB, built with React, Vite, and Framer Motion.
+A modern, fully responsive website for Ochlik Bygg AB, built with React, Vite, and Framer Motion.
 
-## 🎨 Prototypes
+## Design
 
-### 1. Modern & Minimalist
-- Clean, sophisticated design
-- Olive green accents (#6b8e23)
-- Emphasis on whitespace and readability
-- Smooth scroll animations
-- Perfect for showcasing a contemporary, professional company
-
-### 2. Bold & Professional
+**Bold & Professional**
 - Strong, impactful design
 - Dark backgrounds with bright orange accents (#ff6b35)
 - High-contrast layout
 - Statistics section highlighting experience
-- Great for making a powerful first impression
+- Perfect for making a powerful first impression
 
-### 3. Classic & Trustworthy
-- Traditional, warm design
-- Earth tones (browns and olive greens)
-- Serif typography for headings
-- Emphasis on family values and reliability
-- Perfect for highlighting trust and experience
-
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (version 14 or higher)
@@ -50,75 +36,54 @@ npm run dev
 
 4. Open your browser and visit the URL shown in the terminal (usually `http://localhost:5173`)
 
-## 🛠️ Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
 
-## 📦 Technologies Used
+## Technologies Used
 
 - **React** - UI library
 - **Vite** - Fast build tool and dev server
 - **Framer Motion** - Animation library
 - **React Icons** - Icon library
 
-## 🎯 Features
+## Features
 
-- ✨ Smooth page transitions and animations
-- 📱 Fully responsive design (mobile, tablet, desktop)
-- 🎨 Three distinct design themes
-- ⚡ Fast loading with Vite
-- 🔄 Easy switching between prototypes
-- ♿ Accessible markup
-- 📧 Contact information integrated
-- 🏗️ Complete service listings
+- Smooth page transitions and animations
+- Fully responsive design (mobile, tablet, desktop)
+- Bold professional design theme
+- Fast loading with Vite
+- Accessible markup
+- Contact information integrated
+- Complete service listings
+- Project showcase with hover effects
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ochlik-react/
 ├── src/
-│   ├── prototypes/
-│   │   ├── Modern/
-│   │   │   ├── ModernPrototype.jsx
-│   │   │   └── Modern.css
-│   │   ├── Bold/
-│   │   │   ├── BoldPrototype.jsx
-│   │   │   └── Bold.css
-│   │   └── Classic/
-│   │       ├── ClassicPrototype.jsx
-│   │       └── Classic.css
-│   ├── App.jsx
-│   ├── App.css
-│   ├── index.css
-│   └── main.jsx
+│   ├── App.jsx           # Main application component
+│   ├── App.css           # All styles
+│   ├── index.css         # Global resets
+│   └── main.jsx          # Entry point
+├── public/
+│   └── images/           # Static images
 ├── package.json
 └── README.md
 ```
 
-## 🎨 Customization
+## Responsive Design
 
-### Changing Colors
-Each prototype has its own CSS file where you can easily modify colors:
-- Modern: `src/prototypes/Modern/Modern.css`
-- Bold: `src/prototypes/Bold/Bold.css`
-- Classic: `src/prototypes/Classic/Classic.css`
-
-### Adding Content
-Edit the respective prototype component files to add or modify content:
-- `src/prototypes/Modern/ModernPrototype.jsx`
-- `src/prototypes/Bold/BoldPrototype.jsx`
-- `src/prototypes/Classic/ClassicPrototype.jsx`
-
-## 📱 Responsive Design
-
-All prototypes are fully responsive and tested on:
+The website is fully responsive and tested on:
 - Mobile (< 768px)
 - Tablet (768px - 968px)
 - Desktop (> 968px)
 
-## 🌐 Deployment
+## Deployment
 
 ### Build for Production
 ```bash
@@ -130,7 +95,7 @@ The built files will be in the `dist/` folder, ready to deploy to any static hos
 - Netlify
 - GitHub Pages
 - AWS S3
-- etc.
+- Any static hosting provider
 
 ### Quick Deploy with Vercel
 ```bash
@@ -144,7 +109,7 @@ npm run build
 # Then drag and drop the dist folder to https://app.netlify.com/drop
 ```
 
-## 📝 Company Information
+## Company Information
 
 **Ochlik Bygg AB**
 - Founded: 2009
@@ -166,11 +131,11 @@ npm run build
 - Tillbyggnad (Extensions)
 - Specialarbeten (Specialized Construction)
 
-## 📄 License
+## License
 
 This project is created for Ochlik Bygg AB. All rights reserved.
 
-## 👨‍💻 Development
+## Development
 
 Created with modern web technologies for optimal performance and user experience.
 
