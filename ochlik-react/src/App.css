@@ -1,0 +1,383 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.prototype-selector {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.9);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.prototype-selector button {
+  padding: 10px 20px;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.prototype-selector button:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.prototype-selector button.active {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
+/* Landing Page Styles */
+.landing-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #2c3e50;
+  background: #ffffff;
+}
+
+.landing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Landing Hero */
+.landing-hero {
+  background: linear-gradient(135deg, rgba(107, 142, 35, 0.9), rgba(44, 62, 80, 0.8)),
+              url('/images/gallery-header.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 2rem;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-logo {
+  height: 80px;
+  width: auto;
+  margin-bottom: 2rem;
+  filter: brightness(0) invert(1);
+}
+
+.landing-hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.landing-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.landing-description {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Landing Values */
+.landing-values {
+  padding: 5rem 2rem;
+  background: white;
+}
+
+.landing-values h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+}
+
+.landing-values .values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.landing-values .value-item {
+  text-align: center;
+  padding: 2rem;
+}
+
+.landing-values .value-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.landing-values .value-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.landing-values .value-item p {
+  color: #555;
+  line-height: 1.8;
+}
+
+/* Landing References */
+.landing-references {
+  padding: 5rem 2rem;
+  background: #f8f9fa;
+}
+
+.landing-references h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.landing-references .references-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.landing-references .reference-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.landing-references .reference-card:hover {
+  transform: translateY(-5px);
+  border-color: #6b8e23;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.landing-references .reference-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.landing-references .reference-content {
+  padding: 2rem;
+}
+
+.landing-references .reference-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.landing-references .reference-content p {
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.landing-references .reference-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.landing-references .reference-tags span {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #f0f0f0;
+  color: #6b8e23;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+/* Landing Prototypes */
+.landing-prototypes {
+  padding: 5rem 2rem;
+  background: white;
+}
+
+.landing-prototypes h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.prototype-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.prototype-button {
+  padding: 3rem 2rem;
+  background: white;
+  border: 3px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.prototype-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.prototype-button.modern:hover {
+  border-color: #6b8e23;
+}
+
+.prototype-button.bold:hover {
+  border-color: #ff6b35;
+}
+
+.prototype-button.classic:hover {
+  border-color: #8d6e63;
+}
+
+.button-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.button-desc {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Landing Contact */
+.landing-contact {
+  padding: 5rem 2rem;
+  background: #f8f9fa;
+}
+
+.landing-contact h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #2c3e50;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.contact-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  border: 2px solid #e0e0e0;
+  text-align: center;
+}
+
+.contact-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.contact-item p {
+  color: #555;
+  margin: 0.5rem 0;
+  line-height: 1.8;
+}
+
+.contact-item a {
+  color: #6b8e23;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* Landing Footer */
+.landing-footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.landing-footer p {
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .prototype-selector {
+    flex-direction: column;
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .prototype-selector button {
+    font-size: 0.8rem;
+    padding: 8px 15px;
+  }
+
+  .landing-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .landing-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .landing-description {
+    font-size: 1rem;
+  }
+
+  .landing-values h2,
+  .landing-references h2,
+  .landing-prototypes h2,
+  .landing-contact h2 {
+    font-size: 2rem;
+  }
+
+  .landing-logo {
+    height: 60px;
+  }
+}

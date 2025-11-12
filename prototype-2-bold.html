@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ochlik Bygg AB - Bold & Professional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
+
+        /* Navigation */
+        nav {
+            background: #1a1a1a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #ff6b35;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 8rem 2rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(255, 107, 53, 0.1) 100%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-content .highlight {
+            color: #ff6b35;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: #ccc;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            padding: 1.2rem 3rem;
+            background: #ff6b35;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 3px solid #ff6b35;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: #ff6b35;
+        }
+
+        .btn-secondary {
+            padding: 1.2rem 3rem;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 3px solid white;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a1a1a;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ff6b35;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            color: #ccc;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 6rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-title .underline {
+            width: 100px;
+            height: 5px;
+            background: #ff6b35;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-box {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-box:hover {
+            transform: translateY(-10px);
+            border-bottom-color: #ff6b35;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-box h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .service-box p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            background: #1a1a1a;
+            color: white;
+            padding: 6rem 2rem;
+        }
+
+        .why-us-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .why-us-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #ff6b35;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: #ff6b35;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-white {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 3px solid white;
+        }
+
+        .btn-white:hover {
+            background: transparent;
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 4px solid #ff6b35;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .contact-card p {
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .contact-card a {
+            color: #ff6b35;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #1a1a1a;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 2rem;
+        }
+
+        footer p {
+            color: #999;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">OCHLIK <span>BYGG</span></div>
+            <ul class="nav-links">
+                <li><a href="#hem">Hem</a></li>
+                <li><a href="#tjanster">Tjänster</a></li>
+                <li><a href="#om-oss">Om Oss</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hem">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>DIN <span class="highlight">BYGGPARTNER</span> I MARKARYD</h1>
+                <p>Professionella byggnadstjänster sedan 2009. Vi levererar kvalitet, trygghet och expertis i varje projekt.</p>
+                <div class="cta-buttons">
+                    <a href="#kontakt" class="btn-primary">Begär Offert</a>
+                    <a href="#tjanster" class="btn-secondary">Våra Tjänster</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">ÅRS ERFARENHET</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">KUNDNÖJDHET</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">PROJEKT</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">SUPPORT</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="tjanster">
+        <div class="services-container">
+            <div class="section-title">
+                <h2>VÅRA TJÄNSTER</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-box">
+                    <div class="service-icon">🏗️</div>
+                    <h3>NYBYGGNATION</h3>
+                    <p>Kompletta nybyggnadsprojekt från grunden. Vi hanterar allt från projektering till färdigställande med högsta kvalitet.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🔨</div>
+                    <h3>RENOVERING</h3>
+                    <p>Totalrenovering av kök, badrum och hela fastigheter. Vi förvandlar ditt hem till drömrummet.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🏠</div>
+                    <h3>TILLBYGGNAD</h3>
+                    <p>Utöka ditt hem med professionella tillbyggnader som smälter in och ökar värdet på din fastighet.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🛡️</div>
+                    <h3>TAKARBETEN</h3>
+                    <p>Specialister på alla typer av takarbeten. Från reparationer till kompletta takrenovationer.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">🪟</div>
+                    <h3>FÖNSTERINSTALLATION</h3>
+                    <p>Importerar och installerar högkvalitativa fönster anpassade efter dina behov och önskemål.</p>
+                </div>
+                <div class="service-box">
+                    <div class="service-icon">⚙️</div>
+                    <h3>SPECIALARBETEN</h3>
+                    <p>Betongarbeten, murverk, fasadarbeten och mycket mer. Kompletta lösningar för alla byggbehov.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="om-oss">
+        <div class="why-us-container">
+            <div class="section-title">
+                <h2>VARFÖR VÄLJA OSS?</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-us-content">
+                    <h3>Vår Historia</h3>
+                    <p>Grundat 2009 av Tomasz Ochlik har Ochlik Bygg AB utvecklats till en ledande byggfirma i Markaryd. Trots vår tillväxt har vi behållit vår familjekaraktär och personliga service som gör oss unika.</p>
+                    <p style="margin-top: 1.5rem;">Med över 15 års erfarenhet och hundratals nöjda kunder fortsätter vi att leverera byggprojekt av högsta kvalitet. Våra värderingar - <strong>Trygghet, Ansvar och Kunskap</strong> - genomsyrar allt vi gör.</p>
+                </div>
+                <div class="why-us-content">
+                    <ul class="feature-list">
+                        <li>
+                            <div class="feature-text">
+                                <h4>Erfarna Hantverkare</h4>
+                                <p>Alla våra medarbetare är certifierade och erfarna inom sina respektive områden.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-text">
+                                <h4>Kompletta Lösningar</h4>
+                                <p>Goda kontakter inom el, VVS och måleri ger oss möjlighet att hantera hela projekt.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-text">
+                                <h4>Återkommande Kunder</h4>
+                                <p>Vår höga andel återkommande kunder visar på kvaliteten i vårt arbete.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-text">
+                                <h4>Lokalt Förankrade</h4>
+                                <p>Vi känner området och har byggt upp ett starkt förtroende i regionen.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>REDO ATT STARTA DITT PROJEKT?</h2>
+            <p>Kontakta oss idag för en kostnadsfri konsultation och offert. Vi hjälper dig förverkliga dina byggdrömmar!</p>
+            <a href="#kontakt" class="btn-white">Kontakta Oss Nu</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="contact-container">
+            <div class="section-title">
+                <h2>KONTAKTA OSS</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📞 TELEFON</h3>
+                    <p><a href="tel:0737233536">073-723 35 36</a></p>
+                    <p><a href="tel:0730940503">073-094 05 03</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>✉️ EMAIL</h3>
+                    <p><a href="mailto:info@ochlikbygg.se">info@ochlikbygg.se</a></p>
+                    <p><a href="mailto:adam@ochlikbygg.se">adam@ochlikbygg.se</a></p>
+                </div>
+                <div class="contact-card">
+                    <h3>📍 BESÖK OSS</h3>
+                    <p>Hässleholmsvägen 22</p>
+                    <p>285 33 Markaryd</p>
+                </div>
+                <div class="contact-card">
+                    <h3>💬 SOCIALA MEDIER</h3>
+                    <p>Facebook: OTB Bygg AB</p>
+                    <p>Instagram: @ochlikbygg</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Ochlik Bygg AB. Alla rättigheter förbehållna.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ochlik Bygg AB - Classic & Trustworthy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #3e2723;
+            background: #fafaf8;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: #5d4037;
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #fff3e0;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #6d4c41;
+            font-family: 'Georgia', serif;
+        }
+
+        .tagline {
+            font-size: 0.85rem;
+            color: #8d6e63;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5d4037;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .nav-links a:hover {
+            color: #6b8e23;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(93, 64, 55, 0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d7ccc8" width="1200" height="600"/><text x="50%" y="50%" font-size="36" fill="%23795548" text-anchor="middle" dominant-baseline="middle">Byggprojekt</text></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            color: #fff3e0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #6b8e23;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-family: 'Segoe UI', sans-serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-hero:hover {
+            background: #556b2f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Values Section */
+        .values {
+            background: white;
+            padding: 5rem 2rem;
+            border-top: 4px solid #6b8e23;
+        }
+
+        .values-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .values h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #5d4037;
+            font-weight: 400;
+        }
+
+        .values-subtitle {
+            font-size: 1.2rem;
+            color: #8d6e63;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .value-item {
+            padding: 2rem;
+            background: #fafaf8;
+            border: 2px solid #d7ccc8;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .value-item:hover {
+            border-color: #6b8e23;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #6b8e23;
+        }
+
+        .value-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #5d4037;
+        }
+
+        .value-item p {
+            color: #6d4c41;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: #f5f5f0;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #5d4037;
+            font-weight: 400;
+        }
+
+        .about-content .highlight {
+            color: #6b8e23;
+            font-weight: 600;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #6d4c41;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .about-image {
+            background: #d7ccc8;
+            height: 450px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8d6e63;
+            font-size: 1.2rem;
+            border: 4px solid #bcaaa4;
+        }
+
+        .company-info {
+            background: white;
+            padding: 2rem;
+            border-left: 4px solid #6b8e23;
+            margin-top: 2rem;
+        }
+
+        .company-info h4 {
+            color: #5d4037;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .company-info p {
+            font-family: 'Segoe UI', sans-serif;
+            color: #6d4c41;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #5d4037;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #8d6e63;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: #fafaf8;
+            padding: 2.5rem;
+            border-radius: 5px;
+            border: 2px solid #d7ccc8;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            color: #6b8e23;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-item p {
+            color: #6d4c41;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .service-details {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .service-details li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #5d4037;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .service-details li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #6b8e23;
+            font-weight: bold;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            background: linear-gradient(135deg, #6d4c41 0%, #5d4037 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .quote {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-size: 1.2rem;
+            color: #ffccbc;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: #f5f5f0;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: #5d4037;
+            margin-bottom: 2rem;
+        }
+
+        .info-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #6b8e23;
+            border-radius: 5px;
+        }
+
+        .info-item h4 {
+            font-size: 1.1rem;
+            color: #6b8e23;
+            margin-bottom: 0.5rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .info-item p {
+            color: #6d4c41;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .info-item a {
+            color: #6d4c41;
+            text-decoration: none;
+        }
+
+        .info-item a:hover {
+            color: #6b8e23;
+        }
+
+        .contact-map {
+            background: #d7ccc8;
+            height: 100%;
+            min-height: 400px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8d6e63;
+            border: 4px solid #bcaaa4;
+        }
+
+        /* Footer */
+        footer {
+            background: #3e2723;
+            color: #bcaaa4;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: #fff3e0;
+            margin-bottom: 1rem;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bcaaa4;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: block;
+            margin: 0.5rem 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .footer-section a:hover {
+            color: #fff3e0;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #5d4037;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-list {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div>
+                <a href="tel:0737233536">📞 073-723 35 36</a>
+                <a href="mailto:info@ochlikbygg.se">✉️ info@ochlikbygg.se</a>
+            </div>
+            <div>
+                Hässleholmsvägen 22, Markaryd
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo">Ochlik Bygg AB</div>
+                <div class="tagline">Byggdrömmar sedan 2009</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hem">Hem</a></li>
+                <li><a href="#tjanster">Tjänster</a></li>
+                <li><a href="#om-oss">Om Oss</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hem">
+        <div class="hero-content">
+            <h1>Välkommen till Ochlik Bygg</h1>
+            <p class="hero-subtitle">Din pålitliga byggpartner i Markaryd sedan 2009</p>
+            <p>Vi förverkligar dina byggdrömmar med kvalitet, omsorg och över 15 års erfarenhet. Från nybyggnation till renovering - vi finns här för dig.</p>
+            <a href="#kontakt" class="btn-hero">Kontakta oss för offert</a>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="values-container">
+            <h2>Våra Grundvärden</h2>
+            <p class="values-subtitle">Det som gör oss till din bästa val för byggprojekt</p>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="value-icon">🛡️</div>
+                    <h3>Trygghet</h3>
+                    <p>Vi står för säkra, pålitliga byggprojekt där din trygghet alltid kommer först. Varje projekt genomförs med största omsorg och enligt alla säkerhetsföreskrifter.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h3>Ansvar</h3>
+                    <p>Vi tar fullt ansvar för våra projekt från första spadtaget till sista efterkontrollen. Ditt förtroende är vår främsta tillgång.</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">📚</div>
+                    <h3>Kunskap</h3>
+                    <p>Med 15 års branscherfarenhet och kontinuerlig vidareutbildning levererar vi expertis och kvalitet i varje projekt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="om-oss">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>Familjeföretaget med <span class="highlight">professionell touch</span></h2>
+                <p>Ochlik Bygg AB grundades 2009 av Tomasz Ochlik med en vision om att kombinera hantverkets tradition med modern byggkunskap. Vad som började som ett litet familjeföretag har vuxit till en etablerad och respekterad byggfirma i Markaryd och omnejd.</p>
+                <p>Trots vår tillväxt har vi behållit det som gör oss unika - vår familjekaraktär, personliga service och genuina omsorg om varje projekt. Vi är stolta över att många av våra kunder återkommer, vilket vittnar om vårt engagemang för kvalitet och kundnöjdhet.</p>
+                <div class="company-info">
+                    <h4>Vårt Nätverk</h4>
+                    <p>Genom goda kontakter inom el, VVS och måleri kan vi erbjuda kompletta lösningar för alla typer av byggprojekt - från idé till färdigställande.</p>
+                </div>
+            </div>
+            <div class="about-image">
+                <p>Vårt Team i Arbete</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="tjanster">
+        <div class="services-container">
+            <div class="section-header">
+                <h2>Våra Tjänster</h2>
+                <p>Kompletta byggnadslösningar för hem och företag</p>
+            </div>
+            <div class="services-list">
+                <div class="service-item">
+                    <h3>🏗️ Nybyggnation & Ombyggnad</h3>
+                    <p>Vi hanterar alla aspekter av nybyggnation och ombyggnad med expertis och precision.</p>
+                    <ul class="service-details">
+                        <li>Kompletta nybyggnadsprojekt</li>
+                        <li>Ombyggnationer</li>
+                        <li>Tillbyggnationer</li>
+                        <li>Projektering och design</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>🏠 Renovering</h3>
+                    <p>Förnya och förbättra ditt hem med våra professionella renoveringstjänster.</p>
+                    <ul class="service-details">
+                        <li>Köksrenovering</li>
+                        <li>Badrumsrenovering</li>
+                        <li>Totalrenovering</li>
+                        <li>Fasadarbeten och målning</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>🛡️ Tak & Isolering</h3>
+                    <p>Specialister på takarbeten och isolering för ett välisolerat och vädertätt hem.</p>
+                    <ul class="service-details">
+                        <li>Takrenovering och reparation</li>
+                        <li>Byte av takbeläggning</li>
+                        <li>Tilläggsisolering</li>
+                        <li>Takfönster installation</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>🪟 Fönster & Dörrar</h3>
+                    <p>Vi importerar och installerar högkvalitativa fönster och dörrar anpassade efter dina behov.</p>
+                    <ul class="service-details">
+                        <li>Fönsterinstallation</li>
+                        <li>Dörrbyte</li>
+                        <li>Energieffektiva lösningar</li>
+                        <li>Anpassad design</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>⚒️ Betong & Murverk</h3>
+                    <p>Professionella betong- och murverksarbeten för en stabil grund.</p>
+                    <ul class="service-details">
+                        <li>Betongarbeten</li>
+                        <li>Grundläggning</li>
+                        <li>Murverk</li>
+                        <li>Stenfasader</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>🌳 Utomhusarbeten</h3>
+                    <p>Skapa drömträdgården och den perfekta uteplatsen.</p>
+                    <ul class="service-details">
+                        <li>Altaner och uteplatser</li>
+                        <li>Stängsel och skärmar</li>
+                        <li>Trädgårdsmurar</li>
+                        <li>Trädäck</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="quote">"Att arbeta med familjens värderingar - trygghet, ansvar och kunskap - är vad som gör varje projekt personligt för oss. Vi behandlar varje byggprojekt som om det vore vårt eget hem."</p>
+            <p class="quote-author">- Tomasz Ochlik, Grundare</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontakt">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2>Kontakta Oss</h2>
+                <p>Vi finns här för att svara på dina frågor och hjälpa dig med ditt byggprojekt</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Hör av dig till oss</h3>
+                    <div class="info-item">
+                        <h4>📞 Telefon</h4>
+                        <p><a href="tel:0737233536">073-723 35 36</a></p>
+                        <p><a href="tel:0730940503">073-094 05 03</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>✉️ E-post</h4>
+                        <p><a href="mailto:info@ochlikbygg.se">info@ochlikbygg.se</a></p>
+                        <p><a href="mailto:adam@ochlikbygg.se">adam@ochlikbygg.se</a></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>📍 Besöksadress</h4>
+                        <p>Hässleholmsvägen 22</p>
+                        <p>285 33 Markaryd</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>⏰ Öppettider</h4>
+                        <p>Måndag - Fredag: 07:00 - 17:00</p>
+                        <p>Kontakta oss gärna för akuta ärenden</p>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <p>Karta - Hässleholmsvägen 22, Markaryd</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Om Ochlik Bygg</h4>
+                    <p>Sedan 2009 har vi hjälpt familjer och företag i Markaryd med professionella byggnadstjänster. Våra värderingar - trygghet, ansvar och kunskap - genomsyrar allt vi gör.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Snabblänkar</h4>
+                    <a href="#hem">Hem</a>
+                    <a href="#tjanster">Våra Tjänster</a>
+                    <a href="#om-oss">Om Oss</a>
+                    <a href="#kontakt">Kontakt</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Sociala Medier</h4>
+                    <p>Facebook: OTB Bygg AB</p>
+                    <p>Instagram: @ochlikbygg</p>
+                    <p style="margin-top: 1rem;">Följ oss för inspiration och uppdateringar om våra projekt!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ochlik Bygg AB. Alla rättigheter förbehållna.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
