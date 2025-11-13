@@ -1,22 +1,36 @@
-import { motion } from 'framer-motion'
-import { Box, Container, Grid, Card, CardContent, Typography, Link } from '@mui/material'
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram } from 'react-icons/fa'
-import SectionTitle from './SectionTitle'
+import { motion } from "framer-motion";
+import {
+  Box,
+  Container,
+  Grid,
+  Card,
+  CardContent,
+  Typography,
+  Link,
+} from "@mui/material";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaFacebook,
+  FaInstagram,
+} from "react-icons/fa";
+import SectionTitle from "./SectionTitle";
 
 const Contact = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  }
+    transition: { duration: 0.6 },
+  };
 
   const stagger = {
     animate: {
       transition: {
-        staggerChildren: 0.15
-      }
-    }
-  }
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
   const contactInfo = [
     {
@@ -24,37 +38,38 @@ const Contact = () => {
       title: "TELEFON",
       lines: [
         { text: "073-723 35 36", link: "tel:0737233536" },
-        { text: "073-094 05 03", link: "tel:0730940503" }
-      ]
+        { text: "073-094 05 03", link: "tel:0730940503" },
+      ],
     },
     {
       icon: <FaEnvelope />,
       title: "EMAIL",
       lines: [
         { text: "info@ochlikbygg.se", link: "mailto:info@ochlikbygg.se" },
-        { text: "adam@ochlikbygg.se", link: "mailto:adam@ochlikbygg.se" }
-      ]
+        { text: "adam@ochlikbygg.se", link: "mailto:adam@ochlikbygg.se" },
+      ],
     },
     {
       icon: <FaMapMarkerAlt />,
       title: "BESÖK OSS",
-      lines: [
-        { text: "Hässleholmsvägen 22" },
-        { text: "285 33 Markaryd" }
-      ]
+      lines: [{ text: "Hässleholmsvägen 22" }, { text: "285 33 Markaryd" }],
     },
     {
-      icon: <><FaFacebook /> <FaInstagram /></>,
+      icon: (
+        <>
+          <FaFacebook /> <FaInstagram />
+        </>
+      ),
       title: "SOCIALA MEDIER",
       lines: [
         { text: "Facebook: OTB Bygg AB" },
-        { text: "Instagram: @ochlikbygg" }
-      ]
-    }
-  ]
+        { text: "Instagram: @ochlikbygg" },
+      ],
+    },
+  ];
 
   return (
-    <Box id="kontakt" sx={{ py: 10, bgcolor: 'background.paper' }}>
+    <Box id="kontakt" sx={{ py: 10, bgcolor: "background.paper" }}>
       <Container maxWidth="lg">
         <SectionTitle title="KONTAKTA OSS" />
         <Grid
@@ -65,20 +80,19 @@ const Contact = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          sx={{ justifyContent: 'center' }}
+          sx={{ justifyContent: "center" }}
         >
           {contactInfo.map((info, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={12} sm={12} md={12} key={index}>
               <Card
                 component={motion.div}
                 variants={fadeInUp}
                 sx={{
-                  height: '100%',
-                  textAlign: 'center',
-                  borderTop: '4px solid',
-                  borderColor: 'primary.main',
-                  maxWidth: '280px',
-                  mx: 'auto',
+                  height: "100%",
+                  width: "100%",
+                  textAlign: "center",
+                  borderTop: "4px solid",
+                  borderColor: "accent.main",
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
@@ -86,11 +100,11 @@ const Contact = () => {
                     variant="h5"
                     sx={{
                       mb: 2,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                       gap: 1,
-                      fontSize: '1.3rem',
+                      fontSize: "1.3rem",
                     }}
                   >
                     {info.icon} {info.title}
@@ -101,12 +115,12 @@ const Contact = () => {
                         <Link
                           href={line.link}
                           sx={{
-                            color: 'primary.main',
-                            textDecoration: 'none',
+                            color: "primary.main",
+                            textDecoration: "none",
                             fontWeight: 600,
-                            '&:hover': {
-                              color: 'text.primary',
-                            }
+                            "&:hover": {
+                              color: "text.primary",
+                            },
                           }}
                         >
                           {line.text}
@@ -123,7 +137,7 @@ const Contact = () => {
         </Grid>
       </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

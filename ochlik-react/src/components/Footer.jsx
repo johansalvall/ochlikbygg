@@ -47,7 +47,7 @@ const Footer = () => {
                   color: "#aaa",
                   lineHeight: 1.8,
                   mb: 2,
-                  maxWidth: "600px",
+                  maxWidth: "700px",
                 }}
               >
                 Sedan 2009 har vi levererat högkvalitativa byggprojekt i
@@ -61,7 +61,7 @@ const Footer = () => {
           </Grid>
 
           {/* Quick Links Column - Equal width */}
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3} sx={{ maxWidth: "250px" }}>
             <Box sx={{ minHeight: "200px" }}>
               <Typography
                 variant="h6"
@@ -125,7 +125,7 @@ const Footer = () => {
 
           {/* Contact Column - Equal width */}
           <Grid item xs={12} md={3}>
-            <Box sx={{ minHeight: "200px" }}>
+            <Box sx={{ minHeight: "200px", maxWidth: "4000px" }}>
               <Typography
                 variant="h6"
                 sx={{
@@ -156,7 +156,14 @@ const Footer = () => {
                     285 33 Markaryd
                   </Typography>
                 </Box>
-                <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 1,
+                    maxWidth: "200px",
+                  }}
+                >
                   <FaPhone
                     style={{
                       color: "#ff6b35",
@@ -222,7 +229,7 @@ const Footer = () => {
 
           {/* Social Media Column - Equal width */}
           <Grid item xs={12} md={3}>
-            <Box>
+            <Box sx={{ maxWidth: "250px" }}>
               <Typography
                 variant="h6"
                 sx={{

@@ -1,11 +1,20 @@
 import { createTheme } from '@mui/material/styles'
 
 const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   palette: {
     primary: {
-      main: '#ff6b35',
-      light: '#ff8555',
-      dark: '#e55a2a',
+      main: '#3d5a80',
+      light: '#5a7aa0',
+      dark: '#2a3f5f',
       contrastText: '#ffffff',
     },
     secondary: {
@@ -13,6 +22,12 @@ const theme = createTheme({
       light: '#2d2d2d',
       dark: '#0d0d0d',
       contrastText: '#ffffff',
+    },
+    accent: {
+      main: '#f5c842',
+      light: '#f7d66b',
+      dark: '#d4a82f',
+      contrastText: '#1a1a1a',
     },
     background: {
       default: '#ffffff',
@@ -106,6 +121,33 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           boxShadow: 'none',
+        },
+      },
+    },
+    MuiContainer: {
+      defaultProps: {
+        disableGutters: false,
+      },
+      styleOverrides: {
+        root: {
+          paddingLeft: '48px',
+          paddingRight: '48px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          '@media (max-width: 600px)': {
+            paddingLeft: '24px',
+            paddingRight: '24px',
+          },
+        },
+        maxWidthLg: {
+          '@media (min-width: 1200px)': {
+            maxWidth: '1500px !important',
+          },
+        },
+        maxWidthXl: {
+          '@media (min-width: 1536px)': {
+            maxWidth: '1500px !important',
+          },
         },
       },
     },

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a React-based website for **Ochlik Bygg AB**, a Swedish construction company. The application features a bold, professional design with dark backgrounds and striking orange accents (#ff6b35).
+This is a React-based website for **Ochlik Bygg AB**, a Swedish construction company. The application is built with Material-UI (MUI) for component design and Framer Motion for animations.
 
 ## Development Commands
 
@@ -25,46 +25,66 @@ npm run lint
 ## Architecture
 
 ### Technology Stack
-- **React** - UI library
-- **Vite** - Build tool and dev server
+- **React 19** - UI library
+- **Vite** - Build tool and dev server with file watching enabled (`usePolling: true`)
+- **Material-UI (MUI)** - Component library and theming system
 - **Framer Motion** - Animation library
-- **React Icons** - Icon components
+- **React Icons** - Icon components (used alongside MUI icons)
 
 ### Component Structure
 
 ```
-App.jsx (main component)
-├── Navigation (fixed navbar)
-├── Hero Section (with stats)
-├── Services Section (6 services)
-├── References Section (project showcase)
-├── Why Us Section (company history)
-├── CTA Section (call to action)
-├── Contact Section (contact info)
+App.jsx (main component wrapped in ThemeProvider)
+├── Navigation (navbar)
+├── Hero (hero section with stats grid)
+├── Services (6 service cards)
+├── References (project showcase)
+├── WhyUs (company history)
+├── CTA (call to action)
+├── Contact (contact information)
 └── Footer
+
+Shared Components:
+└── SectionTitle (reusable section header with underline)
 ```
 
-### Design Theme
+### Theme System
 
-**Bold & Professional**
-- Colors: Dark backgrounds (#1a1a1a) with bright orange accents (#ff6b35)
-- Style: High contrast, dramatic impact
-- Typography: Uppercase headings, bold weights
-- Animations: Smooth scroll-triggered animations with Framer Motion
+The app uses **MUI's theming system** defined in `theme.js`:
+
+**Color Palette:**
+- **Primary**: Blue (#3d5a80) - Main brand color, used for headings and accents
+- **Secondary**: Dark gray (#1a1a1a) - Backgrounds and text
+- **Accent**: Yellow (#f5c842) - Highlights, stats, and hover effects
+- **Background**: White (#ffffff) default, light gray (#f5f5f5) paper
+
+**Breakpoints:**
+- xs: 0px
+- sm: 600px
+- md: 900px
+- lg: 1200px (max container: 1600px)
+- xl: 1536px (max container: 1920px)
+
+**Key Theme Customizations:**
+- All buttons have `borderRadius: 0` (sharp corners)
+- Typography uses Segoe UI font family
+- Headings are very bold (700-900 weight)
+- Button text is uppercase with letter spacing
+- Container max widths are extended for larger screens
 
 ### Animation Patterns
 
-All sections use **Framer Motion** with consistent patterns:
+All sections use **Framer Motion** with consistent animation patterns:
 
 ```javascript
-// Standard fade-in animation
+// Standard fade-in-up animation
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.6 }
 }
 
-// Stagger children
+// Stagger children animations
 const stagger = {
   animate: {
     transition: {
@@ -73,7 +93,7 @@ const stagger = {
   }
 }
 
-// Usage with viewport triggers
+// Usage with viewport triggers (prevents re-animation)
 <motion.div
   variants={stagger}
   initial="initial"
@@ -84,38 +104,52 @@ const stagger = {
 </motion.div>
 ```
 
-### Assets Location
+**Animation Conventions:**
+- Use `viewport={{ once: true }}` to prevent re-triggering on scroll
+- Stagger delays are typically 0.15s
+- Section titles animate separately with their own timing
+- Hover animations use `whileHover={{ y: -10 }}` or `scale: 1.05`
 
-Static assets are in `public/images/`:
-- `logo.gif` - Company logo
-- `hero.jpg` - Main hero background
-- `gallery-header.jpg` - Gallery/references background
+### File Structure
 
-Images are referenced as `/images/filename.ext` (Vite handles the public folder automatically).
+```
+src/
+├── App.jsx               # Main app component with ThemeProvider
+├── theme.js              # MUI theme configuration
+├── main.jsx              # Entry point
+├── index.css             # Global CSS resets
+└── components/           # All page sections as components
+    ├── Navigation.jsx
+    ├── Hero.jsx
+    ├── Services.jsx
+    ├── References.jsx
+    ├── WhyUs.jsx
+    ├── CTA.jsx
+    ├── Contact.jsx
+    ├── Footer.jsx
+    └── SectionTitle.jsx  # Shared component
+```
 
-### Sections Overview
+### Adding New Components
 
-Each section includes:
+When creating new components:
 
-1. **Navigation** - Sticky nav with logo and links (HEM, TJÄNSTER, OM OSS, KONTAKT)
-2. **Hero** - Large banner with company tagline and statistics grid
-3. **Services** - 6 core services (Nybyggnation, Renovering, Tillbyggnad, Takarbeten, Fönsterinstallation, Specialarbeten)
-4. **References** - 3 project examples with hover effects
-5. **Why Us** - Company history and features
-6. **CTA** - Call-to-action section with gradient background
-7. **Contact** - Contact details (phone, email, address, social media)
-8. **Footer** - Copyright information
+1. **Use MUI components** - Import from `@mui/material` (Box, Container, Typography, Grid, etc.)
+2. **Follow theme colors** - Use theme palette values via `sx` prop: `bgcolor: 'primary.main'`, `color: 'accent.main'`
+3. **Use MUI's sx prop** for styling - Avoids separate CSS files
+4. **Add animations** - Import `motion` from `framer-motion` and wrap components with `motion.div`
+5. **Responsive design** - Use MUI's responsive props: `sx={{ py: { xs: 4, md: 8 } }}`
 
-### CSS Organization
+### Component ID Convention
 
-- `index.css` - Global resets
-- `App.css` - All website styles
-
-**Important**: All styles are scoped under the `.app` class to ensure proper organization.
+Main sections have IDs for navigation anchors:
+- `id="hem"` - Hero
+- `id="tjanster"` - Services
+- `id="referenser"` - References (if present)
+- `id="om-oss"` - WhyUs
+- `id="kontakt"` - Contact
 
 ## Company Information
-
-When editing content, use this official information:
 
 **Ochlik Bygg AB**
 - Founded: 2009 by Tomasz Ochlik
@@ -126,64 +160,54 @@ When editing content, use this official information:
 
 **Core Values**: Trygghet (Security), Ansvar (Responsibility), Kunskap (Knowledge)
 
-## Key Development Notes
+## Development Notes
 
-### Adding New Sections
-When adding a new section:
-1. Use the orange (#ff6b35) accent color
-2. Follow the animation patterns (fadeInUp, stagger)
-3. Ensure mobile responsiveness (breakpoint: 968px)
-4. Maintain consistent spacing (padding: 6rem 2rem)
+### Vite Configuration
+- File watching uses polling (`usePolling: true`) to ensure proper hot reload
+- Dev server typically runs on http://localhost:5173
+- HMR (Hot Module Replacement) is enabled for fast development
 
-### Styling Guidelines
-- Primary brand color: #ff6b35 (orange)
-- Dark background: #1a1a1a
-- Light background: #f5f5f5
-- Text on dark: white or #ccc
-- Text on light: #1a1a1a or #555
+### Static Assets
+Images are in `public/images/` and referenced as `/images/filename.ext`:
+- `background.jpg` - Hero background
+- `logo.gif` - Company logo (if present)
+- Other project images
 
-### Hot Module Replacement
-Vite's HMR is enabled. When editing:
-- CSS changes apply instantly without page reload
-- JSX changes trigger fast refresh (preserves React state)
-- Changes to `App.jsx` may require full reload
+### Responsive Strategy
+- MUI Grid system for layouts
+- Use responsive object syntax in `sx` prop: `{ xs: value, md: value }`
+- Mobile breakpoint: 968px (referenced in some custom media queries)
+- Typography scales automatically per theme configuration
 
-### Responsive Design
-Mobile-first responsive design:
-- Mobile: < 768px
-- Desktop: > 968px
-- Use `@media (max-width: 968px)` for mobile breakpoints
+### Common Patterns
 
-Key responsive changes:
-- Hero: Single column layout on mobile
-- Navigation: Reduced spacing on mobile
-- Stats: Maintain 2-column grid even on mobile
-- Content: Full width with reduced font sizes
+**Section Layout:**
+```jsx
+<Box id="section-id" sx={{ py: 10, bgcolor: 'background.paper' }}>
+  <Container maxWidth="lg">
+    <SectionTitle title="SECTION TITLE" />
+    {/* Section content */}
+  </Container>
+</Box>
+```
 
-### Framer Motion Performance
-For optimal performance:
-- Use `viewport={{ once: true }}` for scroll-triggered animations (prevents re-triggering)
-- Use `whileInView` instead of always-active animations
-- Keep `staggerChildren` delays reasonable (0.1-0.2s)
+**MUI Button with Framer Motion:**
+```jsx
+<Button
+  component={motion.a}
+  href="#kontakt"
+  variant="contained"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  BUTTON TEXT
+</Button>
+```
 
-## Production Deployment
+## Production Build
 
-### Building for Production
 ```bash
 npm run build
 ```
 
-The built files will be in the `dist/` folder, ready to deploy to any static hosting service.
-
-### Deployment Options
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS S3
-- Any static hosting provider
-
-### Environment Considerations
-- Ensure all image paths are correct (`/images/...`)
-- Test all animations on production build
-- Verify mobile responsiveness
-- Check that all links work correctly
+Built files go to `dist/` folder, ready for static hosting (Vercel, Netlify, etc.)

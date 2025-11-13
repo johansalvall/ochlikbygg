@@ -5,9 +5,9 @@ import Hero from "./components/Hero";
 import Services from "./components/Services";
 import References from "./components/References";
 import WhyUs from "./components/WhyUs";
+import Footer from "./components/Footer";
 import CTA from "./components/CTA";
 import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,7 +19,6 @@ function App() {
       <References />
       <WhyUs />
       <CTA />
-      <Contact />
       <Footer />
     </ThemeProvider>
   );

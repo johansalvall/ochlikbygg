@@ -20,7 +20,7 @@ const SectionTitle = ({ title, white = false }) => {
         sx={{
           width: '100px',
           height: '5px',
-          bgcolor: 'primary.main',
+          bgcolor: '#f5c842',
           mx: 'auto',
           mt: 2
         }}

@@ -27,11 +27,14 @@ const Hero = () => {
     <Box
       id="hem"
       sx={{
-        background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(45, 45, 45, 0.85) 100%), url(/images/hero.jpg)',
+        background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(45, 45, 45, 0.85) 100%), url(/images/background.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         color: 'white',
+        minHeight: { xs: 'auto', md: '90vh' },
         py: { xs: 8, md: 12 },
+        display: 'flex',
+        alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
@@ -41,7 +44,7 @@ const Hero = () => {
           right: 0,
           width: '50%',
           height: '100%',
-          background: 'linear-gradient(45deg, transparent 0%, rgba(255, 107, 53, 0.15) 100%)',
+          background: 'linear-gradient(45deg, transparent 0%, rgba(61, 90, 128, 0.15) 100%)',
         }
       }}
     >
@@ -134,7 +137,7 @@ const Hero = () => {
                       borderColor: 'primary.main',
                     }}
                   >
-                    <Typography variant="h2" sx={{ color: 'primary.main', fontSize: '3rem', lineHeight: 1 }}>
+                    <Typography variant="h2" sx={{ color: '#f5c842', fontSize: '3rem', lineHeight: 1 }}>
                       {stat.number}
                     </Typography>
                     <Typography variant="body1" sx={{ mt: 1, color: '#ccc', fontSize: '1.1rem' }}>
