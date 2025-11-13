@@ -26,9 +26,9 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
-        <Grid container spacing={3} sx={{ mb: 5 }}>
-          {/* About Us Column - Takes remainder space */}
-          <Grid item xs={12} md={3}>
+        <Grid container spacing={4} sx={{ mb: 5 }}>
+          {/* About Us Column */}
+          <Grid item xs={12} md={4}>
             <Box sx={{ minHeight: "200px" }}>
               <Typography
                 variant="h6"
@@ -50,19 +50,29 @@ const Footer = () => {
                   maxWidth: "700px",
                 }}
               >
-                Sedan 2009 har vi levererat högkvalitativa byggprojekt i
-                Markaryd och omnejd. Vi är specialister på nybyggnation,
-                renovering och tillbyggnader. Vi erbjuder professionella
-                tjänster inom nybyggnation, renovering, tillbyggnader och
-                takarbeten. Med erfarenhet och kunskap säkerställer vi högsta
-                kvalitet i varje projekt.
+                Sedan 2009 har Ochlik Bygg AB levererat högkvalitativa
+                byggprojekt i Markaryd och omnejd. Vi erbjuder allt inom bygg -
+                från första ritning till slutlig överlämning. Hos oss står
+                kunden alltid i centrum, och vi arbetar med hög kvalitet och
+                noggrannhet i varje projekt.
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#999",
+                  fontSize: "0.85rem",
+                  fontWeight: 600,
+                  mt: 2,
+                }}
+              >
+                Org.nr: 556990-54
               </Typography>
             </Box>
           </Grid>
 
-          {/* Quick Links Column - Equal width */}
-          <Grid item xs={12} md={3} sx={{ maxWidth: "250px" }}>
-            <Box sx={{ minHeight: "200px" }}>
+          {/* Quick Links Column */}
+          <Grid item xs={12} sm={6} md={2}>
+            <Box>
               <Typography
                 variant="h6"
                 sx={{
@@ -81,7 +91,7 @@ const Footer = () => {
                     color: "#aaa",
                     textDecoration: "none",
                     fontSize: "0.9rem",
-                    "&:hover": { color: "#ff6b35" },
+                    "&:hover": { color: "accent.main" },
                   }}
                 >
                   Hem
@@ -92,7 +102,7 @@ const Footer = () => {
                     color: "#aaa",
                     textDecoration: "none",
                     fontSize: "0.9rem",
-                    "&:hover": { color: "#ff6b35" },
+                    "&:hover": { color: "accent.main" },
                   }}
                 >
                   Tjänster
@@ -103,7 +113,7 @@ const Footer = () => {
                     color: "#aaa",
                     textDecoration: "none",
                     fontSize: "0.9rem",
-                    "&:hover": { color: "#ff6b35" },
+                    "&:hover": { color: "accent.main" },
                   }}
                 >
                   Referenser
@@ -114,7 +124,7 @@ const Footer = () => {
                     color: "#aaa",
                     textDecoration: "none",
                     fontSize: "0.9rem",
-                    "&:hover": { color: "#ff6b35" },
+                    "&:hover": { color: "accent.main" },
                   }}
                 >
                   Kontakt
@@ -123,9 +133,58 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          {/* Contact Column - Equal width */}
-          <Grid item xs={12} md={3}>
-            <Box sx={{ minHeight: "200px", maxWidth: "4000px" }}>
+          {/* Service Areas Column */}
+          <Grid item xs={12} sm={6} md={2}>
+            <Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "white",
+                  mb: 2,
+                  fontSize: "1rem",
+                  fontWeight: 700,
+                }}
+              >
+                VÅRA OMRÅDEN
+              </Typography>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#aaa", fontSize: "0.9rem" }}
+                >
+                  • Markaryd
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#aaa", fontSize: "0.9rem" }}
+                >
+                  • Hässleholm
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#aaa", fontSize: "0.9rem" }}
+                >
+                  • Ljungby
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#aaa", fontSize: "0.9rem" }}
+                >
+                  • Älmhult
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "#aaa", fontSize: "0.9rem" }}
+                >
+                  • Osby
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+
+          {/* Contact Column */}
+          <Grid item xs={12} md={4}>
+            <Box>
               <Typography
                 variant="h6"
                 sx={{
@@ -141,7 +200,7 @@ const Footer = () => {
                 <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
                   <FaMapMarkerAlt
                     style={{
-                      color: "#ff6b35",
+                      color: "primary.main",
                       marginTop: "4px",
                       fontSize: "1rem",
                       flexShrink: 0,
@@ -161,12 +220,11 @@ const Footer = () => {
                     display: "flex",
                     alignItems: "flex-start",
                     gap: 1,
-                    maxWidth: "200px",
                   }}
                 >
                   <FaPhone
                     style={{
-                      color: "#ff6b35",
+                      color: "",
                       marginTop: "4px",
                       fontSize: "1rem",
                       flexShrink: 0,
@@ -179,7 +237,7 @@ const Footer = () => {
                         sx={{
                           color: "#aaa",
                           textDecoration: "none",
-                          "&:hover": { color: "#ff6b35" },
+                          "&:hover": { color: "accent.main" },
                         }}
                       >
                         073-723 35 36
@@ -191,7 +249,7 @@ const Footer = () => {
                         sx={{
                           color: "#aaa",
                           textDecoration: "none",
-                          "&:hover": { color: "#ff6b35" },
+                          "&:hover": { color: "accent.main" },
                         }}
                       >
                         073-094 05 03
@@ -202,7 +260,7 @@ const Footer = () => {
                 <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
                   <FaEnvelope
                     style={{
-                      color: "#ff6b35",
+                      color: "primary.main",
                       marginTop: "4px",
                       fontSize: "1rem",
                       flexShrink: 0,
@@ -215,7 +273,7 @@ const Footer = () => {
                         sx={{
                           color: "#aaa",
                           textDecoration: "none",
-                          "&:hover": { color: "#ff6b35" },
+                          "&:hover": { color: "accent.main" },
                         }}
                       >
                         info@ochlikbygg.se
@@ -224,65 +282,59 @@ const Footer = () => {
                   </Box>
                 </Box>
               </Box>
-            </Box>
-          </Grid>
 
-          {/* Social Media Column - Equal width */}
-          <Grid item xs={12} md={3}>
-            <Box sx={{ maxWidth: "250px" }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: "white",
-                  mb: 2,
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                }}
-              >
-                FÖLJ OSS
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "#aaa",
-                  mb: 3,
-                  fontSize: "0.9rem",
-                  lineHeight: 1.8,
-                }}
-              >
-                Följ oss på sociala medier för att se våra senaste projekt och
-                nyheter. Vi delar regelbundet bilder och uppdateringar från våra
-                byggprojekt.
-              </Typography>
-              <Box sx={{ display: "flex", gap: 1.5 }}>
-                <IconButton
+              {/* Social Media in Contact Column */}
+              <Box sx={{ mt: 3 }}>
+                <Typography
+                  variant="body2"
                   sx={{
-                    bgcolor: "#2d2d2d",
                     color: "#aaa",
-                    "&:hover": {
-                      bgcolor: "#ff6b35",
-                      color: "white",
-                    },
-                    width: 40,
-                    height: 40,
+                    mb: 1.5,
+                    fontSize: "0.9rem",
                   }}
                 >
-                  <FaFacebook />
-                </IconButton>
-                <IconButton
-                  sx={{
-                    bgcolor: "#2d2d2d",
-                    color: "#aaa",
-                    "&:hover": {
-                      bgcolor: "#ff6b35",
-                      color: "white",
-                    },
-                    width: 40,
-                    height: 40,
-                  }}
-                >
-                  <FaInstagram />
-                </IconButton>
+                  Följ våra projekt:
+                </Typography>
+                <Box sx={{ display: "flex", gap: 1.5 }}>
+                  <IconButton
+                    component="a"
+                    href="https://www.facebook.com/OTBByggAB"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    sx={{
+                      bgcolor: "#2d2d2d",
+                      color: "#aaa",
+                      "&:hover": {
+                        bgcolor: "accent.main",
+                        color: "#1a1a1a",
+                      },
+                      width: 40,
+                      height: 40,
+                    }}
+                  >
+                    <FaFacebook />
+                  </IconButton>
+                  <IconButton
+                    component="a"
+                    href="https://www.instagram.com/ochlikbygg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    sx={{
+                      bgcolor: "#2d2d2d",
+                      color: "#aaa",
+                      "&:hover": {
+                        bgcolor: "accent.main",
+                        color: "#1a1a1a",
+                      },
+                      width: 40,
+                      height: 40,
+                    }}
+                  >
+                    <FaInstagram />
+                  </IconButton>
+                </Box>
               </Box>
             </Box>
           </Grid>

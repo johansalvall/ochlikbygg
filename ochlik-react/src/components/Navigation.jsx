@@ -14,17 +14,19 @@ const Navigation = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
           <Box>
-            <motion.img
-              src="/images/logo.gif"
-              alt="Ochlik Bygg AB"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                height: "55px",
-                width: "auto",
-                cursor: "pointer",
-              }}
-            />
+            <Link href="#hem" sx={{ display: "flex", alignItems: "center" }}>
+              <motion.img
+                src="/images/logo.gif"
+                alt="Ochlik Bygg AB"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  height: "55px",
+                  width: "auto",
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
           </Box>
           <Box sx={{ display: "flex", gap: { xs: 2, md: 4 } }}>
             {["HEM", "TJÄNSTER", "OM OSS", "KONTAKT"].map((text, index) => (
@@ -34,7 +36,7 @@ const Navigation = () => {
                   text === "HEM"
                     ? "hem"
                     : text === "TJÄNSTER"
-                    ? "tjanster"
+                    ? "referenser"
                     : text === "OM OSS"
                     ? "om-oss"
                     : "kontakt"

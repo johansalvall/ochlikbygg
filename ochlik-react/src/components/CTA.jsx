@@ -86,6 +86,7 @@ const CTA = () => {
 
   return (
     <Box
+      id="kontakt"
       sx={{
         background: "linear-gradient(135deg, #3d5a80 0%, #2a3f5f 100%)",
         py: 10,

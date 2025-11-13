@@ -220,7 +220,7 @@ const References = () => {
                           "linear-gradient(transparent, rgba(26, 26, 26, 0.9))",
                         p: 4,
                         pt: 6,
-                        transform: "translateY(60%)",
+                        transform: "translateY(0)",
                         transition: "transform 0.3s",
                       }}
                     >
@@ -277,15 +277,16 @@ const References = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          p: 2,
+          p: { xs: 0, sm: 2 },
         }}
       >
         <Box
           sx={{
             bgcolor: "white",
-            maxWidth: 900,
+            maxWidth: { xs: "100%", sm: 900 },
             width: "100%",
-            maxHeight: "90vh",
+            height: { xs: "100vh", sm: "auto" },
+            maxHeight: { xs: "100vh", sm: "90vh" },
             overflow: "auto",
             position: "relative",
             outline: "none",
@@ -296,11 +297,13 @@ const References = () => {
               <IconButton
                 onClick={handleClose}
                 sx={{
-                  position: "absolute",
-                  right: 8,
+                  position: "sticky",
+                  right: { xs: 8, sm: 8 },
                   top: 8,
+                  float: "right",
                   bgcolor: "rgba(255, 255, 255, 0.9)",
-                  zIndex: 1,
+                  zIndex: 1000,
+                  m: 1,
                   "&:hover": {
                     bgcolor: "white",
                   },
@@ -308,14 +311,102 @@ const References = () => {
               >
                 <CloseIcon />
               </IconButton>
-              <Box
-                sx={{
-                  height: 400,
-                  backgroundImage: `url('${selectedProject.image}')`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              />
+
+              {/* Image Carousel at Top */}
+              {selectedProject.galleryImages &&
+                selectedProject.galleryImages.length > 0 && (
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "100%",
+                      height: { xs: 300, sm: 450 },
+                      bgcolor: "#f5f5f5",
+                      overflow: "hidden",
+                    }}
+                  >
+                    {/* Swipeable Carousel Image */}
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={currentImageIndex}
+                        src={selectedProject.galleryImages[currentImageIndex]}
+                        alt={`${selectedProject.title} projekt ${currentImageIndex + 1}`}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={0.2}
+                        onDragEnd={(e, { offset, velocity }) => {
+                          const swipe = Math.abs(offset.x) * velocity.x;
+                          if (swipe > 500) {
+                            handlePrevImage();
+                          } else if (swipe < -500) {
+                            handleNextImage();
+                          }
+                        }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "contain",
+                          display: "block",
+                        }}
+                      />
+                    </AnimatePresence>
+
+                    {/* Navigation Arrows */}
+                    <IconButton
+                      onClick={handlePrevImage}
+                      sx={{
+                        position: "absolute",
+                        left: 8,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        bgcolor: "rgba(255, 255, 255, 0.9)",
+                        "&:hover": {
+                          bgcolor: "white",
+                        },
+                      }}
+                    >
+                      <ChevronLeft />
+                    </IconButton>
+
+                    <IconButton
+                      onClick={handleNextImage}
+                      sx={{
+                        position: "absolute",
+                        right: 8,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        bgcolor: "rgba(255, 255, 255, 0.9)",
+                        "&:hover": {
+                          bgcolor: "white",
+                        },
+                      }}
+                    >
+                      <ChevronRight />
+                    </IconButton>
+
+                    {/* Image Counter */}
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        bottom: 16,
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        bgcolor: "rgba(0, 0, 0, 0.7)",
+                        color: "white",
+                        px: 2,
+                        py: 1,
+                        borderRadius: 2,
+                        fontSize: "0.9rem",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {currentImageIndex + 1} / {selectedProject.galleryImages.length}
+                    </Box>
+                  </Box>
+                )}
               <Box sx={{ p: 4 }}>
                 <Typography variant="h3" sx={{ mb: 2, color: "text.primary" }}>
                   {selectedProject.title}
@@ -340,158 +431,10 @@ const References = () => {
                 <Typography
                   variant="body1"
                   color="text.primary"
-                  sx={{ lineHeight: 1.8, mb: 4, whiteSpace: "pre-line" }}
+                  sx={{ lineHeight: 1.8, whiteSpace: "pre-line" }}
                 >
                   {selectedProject.detailedDescription}
                 </Typography>
-
-                {/* Image Carousel */}
-                {selectedProject.galleryImages &&
-                  selectedProject.galleryImages.length > 0 && (
-                    <>
-                      <Typography
-                        variant="h5"
-                        sx={{ mb: 3, color: "text.primary", fontWeight: 700 }}
-                      >
-                        Exempel från våra projekt
-                      </Typography>
-                      <Box
-                        sx={{
-                          position: "relative",
-                          width: "100%",
-                          height: { xs: 300, sm: 450 },
-                          bgcolor: "#f5f5f5",
-                          borderRadius: 2,
-                          overflow: "hidden",
-                        }}
-                      >
-                        {/* Carousel Image */}
-                        <AnimatePresence mode="wait">
-                          <motion.img
-                            key={currentImageIndex}
-                            src={selectedProject.galleryImages[currentImageIndex]}
-                            alt={`${selectedProject.title} projekt ${currentImageIndex + 1}`}
-                            initial={{ opacity: 0, x: 100 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -100 }}
-                            transition={{ duration: 0.3 }}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "contain",
-                              display: "block",
-                            }}
-                          />
-                        </AnimatePresence>
-
-                        {/* Navigation Buttons */}
-                        <IconButton
-                          onClick={handlePrevImage}
-                          sx={{
-                            position: "absolute",
-                            left: 8,
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            bgcolor: "rgba(255, 255, 255, 0.9)",
-                            "&:hover": {
-                              bgcolor: "white",
-                            },
-                          }}
-                        >
-                          <ChevronLeft />
-                        </IconButton>
-
-                        <IconButton
-                          onClick={handleNextImage}
-                          sx={{
-                            position: "absolute",
-                            right: 8,
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            bgcolor: "rgba(255, 255, 255, 0.9)",
-                            "&:hover": {
-                              bgcolor: "white",
-                            },
-                          }}
-                        >
-                          <ChevronRight />
-                        </IconButton>
-
-                        {/* Image Counter */}
-                        <Box
-                          sx={{
-                            position: "absolute",
-                            bottom: 16,
-                            left: "50%",
-                            transform: "translateX(-50%)",
-                            bgcolor: "rgba(0, 0, 0, 0.7)",
-                            color: "white",
-                            px: 2,
-                            py: 1,
-                            borderRadius: 2,
-                            fontSize: "0.9rem",
-                            fontWeight: 600,
-                          }}
-                        >
-                          {currentImageIndex + 1} / {selectedProject.galleryImages.length}
-                        </Box>
-                      </Box>
-
-                      {/* Thumbnail Strip */}
-                      <Box
-                        sx={{
-                          display: "flex",
-                          gap: 1,
-                          mt: 2,
-                          overflowX: "auto",
-                          pb: 1,
-                          "&::-webkit-scrollbar": {
-                            height: "6px",
-                          },
-                          "&::-webkit-scrollbar-thumb": {
-                            bgcolor: "primary.main",
-                            borderRadius: "3px",
-                          },
-                        }}
-                      >
-                        {selectedProject.galleryImages.map((img, imgIndex) => (
-                          <Box
-                            key={imgIndex}
-                            onClick={() => setCurrentImageIndex(imgIndex)}
-                            sx={{
-                              minWidth: 80,
-                              height: 60,
-                              borderRadius: 1,
-                              overflow: "hidden",
-                              cursor: "pointer",
-                              border: "3px solid",
-                              borderColor:
-                                currentImageIndex === imgIndex
-                                  ? "primary.main"
-                                  : "transparent",
-                              transition: "all 0.3s",
-                              opacity: currentImageIndex === imgIndex ? 1 : 0.6,
-                              "&:hover": {
-                                opacity: 1,
-                                borderColor: "primary.light",
-                              },
-                            }}
-                          >
-                            <img
-                              src={img}
-                              alt={`Thumbnail ${imgIndex + 1}`}
-                              style={{
-                                width: "100%",
-                                height: "100%",
-                                objectFit: "cover",
-                                display: "block",
-                              }}
-                            />
-                          </Box>
-                        ))}
-                      </Box>
-                    </>
-                  )}
               </Box>
             </>
           )}

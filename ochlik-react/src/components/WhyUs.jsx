@@ -5,20 +5,28 @@ import SectionTitle from './SectionTitle'
 const WhyUs = () => {
   const features = [
     {
+      title: "Kunden i Centrum",
+      description: "Hos oss står du som kund alltid i centrum. Vi lyssnar på dina behov och anpassar våra lösningar efter just dina önskemål."
+    },
+    {
+      title: "Från Ritning till Överlämning",
+      description: "Vi hanterar allt från första skissen till färdigt projekt. En kontaktperson genom hela processen ger dig trygghet och enkelhet."
+    },
+    {
       title: "Erfarna Hantverkare",
-      description: "Alla våra medarbetare är certifierade och erfarna inom sina respektive områden."
+      description: "Skickliga snickare och byggare med årtionden av samlad erfarenhet. Alla våra medarbetare är certifierade och kunniga."
     },
     {
       title: "Kompletta Lösningar",
-      description: "Goda kontakter inom el, VVS och måleri ger oss möjlighet att hantera hela projekt."
+      description: "Genom goda kontakter inom el, VVS, måleri och andra bygghantverk kan vi erbjuda totalentreprenader där allt samordnas."
     },
     {
-      title: "Återkommande Kunder",
-      description: "Vår höga andel återkommande kunder visar på kvaliteten i vårt arbete."
+      title: "Hög Kvalitet och Noggrannhet",
+      description: "Vi kompromissar aldrig med kvaliteten. Varje detalj utförs med precision och omsorg för att uppnå bästa resultat."
     },
     {
       title: "Lokalt Förankrade",
-      description: "Vi känner området och har byggt upp ett starkt förtroende i regionen."
+      description: "Sedan 2009 i Markaryd och omnejd. Vi känner området och har byggt upp ett starkt förtroende i regionen genom nöjda kunder."
     }
   ]
 
@@ -35,15 +43,16 @@ const WhyUs = () => {
               viewport={{ once: true }}
             >
               <Typography variant="h3" sx={{ mb: 3, color: 'primary.main' }}>
-                Vår Historia
+                Allt Inom Bygg
               </Typography>
-              <Typography variant="body1" sx={{ color: '#ddd', mb: 3 }}>
-                Grundat 2009 av Tomasz Ochlik har Ochlik Bygg AB utvecklats till en ledande byggfirma i Markaryd.
-                Trots vår tillväxt har vi behållit vår familjekaraktär och personliga service som gör oss unika.
+              <Typography variant="body1" sx={{ color: '#ddd', mb: 3, lineHeight: 1.8 }}>
+                Grundat 2009 av Tomasz Ochlik har Ochlik Bygg AB vuxit till en pålitlig partner för både privatpersoner och företag i Markaryd och omnejd. Vi erbjuder allt inom bygg - från mindre renoveringar till storskaliga nybyggnationer. Oavsett projektets omfattning får du samma professionella service och engagemang.
               </Typography>
-              <Typography variant="body1" sx={{ color: '#ddd' }}>
-                Med över 15 års erfarenhet och hundratals nöjda kunder fortsätter vi att leverera byggprojekt av högsta kvalitet.
-                Våra värderingar - <strong>Trygghet, Ansvar och Kunskap</strong> - genomsyrar allt vi gör.
+              <Typography variant="body1" sx={{ color: '#ddd', mb: 3, lineHeight: 1.8 }}>
+                Trots vår tillväxt har vi behållit vår familjekaraktär och personliga service som gör oss unika. Hos oss är ingen kund för liten eller för stor - alla projekt är lika viktiga för oss.
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#ddd', lineHeight: 1.8 }}>
+                Med över <strong>15 års erfarenhet</strong> och <strong>hundratals nöjda kunder</strong> fortsätter vi att leverera byggprojekt av högsta kvalitet. Våra värderingar - <strong>Trygghet, Ansvar och Kunskap</strong> - genomsyrar allt vi gör och garanterar att ditt projekt blir en succé.
               </Typography>
             </Box>
           </Grid>
