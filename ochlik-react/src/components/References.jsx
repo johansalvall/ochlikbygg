@@ -77,16 +77,16 @@ const References = () => {
         "Modernisera ditt hem med nya fönster och fräsch fasad för bättre energiprestanda och utseende.",
       detailedDescription:
         "Nya fönster och en uppdaterad fasad förvandlar ditt hem både utvändigt och invändigt. Detta innebär för dig:\n\n• Dramatiskt minskade värmeförluster - upp till 30% lägre energikostnader\n• Bättre ljudisolering från trafikbuller\n• Modernare utseende som ökar fastighetsvärdet\n• Underhållsfria material som håller i decennier\n• Förbättrat inomhusklimat med moderna ventilationslösningar\n\nVi hjälper dig välja rätt fönster och fasadlösning för just ditt hus. Från traditionella träfönster till moderna energieffektiva alternativ - vi hanterar installation och fasadarbete så att allt blir perfekt.",
-      image: "/images/windows_frontage/IMG_1164.jpeg",
+      image: "/images/windows_frontage/IMG_1164-min.jpeg",
       galleryImages: [
-        "/images/windows_frontage/IMG_1164.jpeg",
-        "/images/windows_frontage/IMG_1107.jpeg",
-        "/images/windows_frontage/IMG_3022.jpeg",
-        "/images/windows_frontage/IMG_4703.jpeg",
-        "/images/windows_frontage/IMG_4709.jpeg",
-        "/images/windows_frontage/IMG_1533.jpeg",
+        "/images/windows_frontage/IMG_1164-min.jpeg",
+        "/images/windows_frontage/IMG_1107-min.jpeg",
+        "/images/windows_frontage/IMG_3022-min.jpeg",
+        "/images/windows_frontage/IMG_4703-min.jpeg",
+        "/images/windows_frontage/IMG_4709-min.jpeg",
+        "/images/windows_frontage/IMG_1533-min.jpeg",
       ],
-      tags: ["FÖNSTER", "FASAD", "ENERGI"],
+      tags: ["FASAD", "FÖNSTER", "ENERGI"],
     },
     {
       title: "GRUNDARBETE",
@@ -94,14 +94,14 @@ const References = () => {
         "Professionellt grundarbete som säkerställer en stabil och hållbar grund för ditt byggprojekt.",
       detailedDescription:
         "En stabil grund är avgörande för varje byggprojekt. Våra grundarbeten ger dig trygghet genom:\n\n• Professionell markberedning och dränering\n• Platta på mark, källare eller krypgrund enligt dina behov\n• Korrekt armering och betonggjutning för maximal stabilitet\n• Fuktsäkra lösningar som skyddar mot markfukt\n• Långsiktig hållbarhet och säkerhet för din byggnad\n\nVi tar hand om allt från markundersökning till färdig grund, och säkerställer att allt uppfyller byggnadskraven. Oavsett om det gäller nybyggnation, tillbyggnad eller grundförstärkning - vi har erfarenheten.",
-      image: "/images/foundation_work/IMG_2201.jpeg",
+      image: "/images/foundation_work/IMG_2201-min.jpeg",
       galleryImages: [
-        "/images/foundation_work/IMG_2201.jpeg",
-        "/images/foundation_work/IMG_2272.jpeg",
-        "/images/foundation_work/IMG_5174.jpeg",
-        "/images/foundation_work/IMG_5267.jpeg",
-        "/images/foundation_work/IMG_2310.jpeg",
-        "/images/foundation_work/IMG_5301.jpeg",
+        "/images/foundation_work/IMG_2201-min.jpeg",
+        "/images/foundation_work/IMG_2272-min.jpeg",
+        "/images/foundation_work/IMG_5174-min.jpeg",
+        "/images/foundation_work/IMG_5267-min.jpeg",
+        "/images/foundation_work/IMG_2310-min.jpeg",
+        "/images/foundation_work/IMG_5301-min.jpeg",
       ],
       tags: ["GRUND", "BETONG"],
     },
@@ -111,14 +111,14 @@ const References = () => {
         "Snygga och hållbara trallösningar för uteplats, altan och terrass som förlänger din bostadsyta utomhus.",
       detailedDescription:
         "En välbyggd trall eller altan skapar ett fantastiskt utomhusutrymme för familjen. För dig innebär det:\n\n• Ett trivsamt uterum för avkoppling och umgänge\n• Ökat bostadsvärde och förbättrad livskvalitet\n• Underhållsfria material som tål väder året runt\n• Professionell nivåsättning och dränering\n• Räcken och trappor som är både säkra och vackra\n\nVi bygger allt från små uteplatser till stora altaner och pooltrallningar. Vi hjälper dig välja rätt material - oavsett om du föredrar traditionellt trä eller moderna kompositmaterial som kräver minimalt underhåll.",
-      image: "/images/trolley/IMG_0931.jpeg",
+      image: "/images/trolley/IMG_0931-min.jpeg",
       galleryImages: [
-        "/images/trolley/IMG_0931.jpeg",
-        "/images/trolley/IMG_1254.jpeg",
-        "/images/trolley/IMG_1786.jpeg",
-        "/images/trolley/IMG_3009.jpeg",
-        "/images/trolley/IMG_3555.jpeg",
-        "/images/trolley/IMG_6182.jpeg",
+        "/images/trolley/IMG_0931-min.jpeg",
+        "/images/trolley/IMG_1254-min.jpeg",
+        "/images/trolley/IMG_1786-min.jpeg",
+        "/images/trolley/IMG_3009-min.jpeg",
+        "/images/trolley/IMG_3555-min.jpeg",
+        "/images/trolley/IMG_6182-min.jpeg",
       ],
       tags: ["TRALL", "UTEPLATS", "ALTAN"],
     },
@@ -199,7 +199,7 @@ const References = () => {
                     cursor: "pointer",
                     maxWidth: "400px",
                     border: "1px solid",
-                    borderColor: "accent.main",
+                    borderColor: "primary.main",
                     boxShadow: "0 8px 24px rgba(61, 90, 128, 0.15)",
                   }}
                 >
@@ -264,7 +264,7 @@ const References = () => {
                           label={tag}
                           sx={{
                             bgcolor: "secondary.main",
-                            color: "primary.main",
+                            color: "accent.main",
                             fontWeight: 700,
                             fontSize: "0.75rem",
                             letterSpacing: "1px",
@@ -449,8 +449,8 @@ const References = () => {
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
                         sx={{
-                          width: 80,
-                          height: 80,
+                          width: 60,
+                          height: 60,
                           flexShrink: 0,
                           backgroundImage: `url('${image}')`,
                           backgroundSize: "cover",
@@ -483,7 +483,7 @@ const References = () => {
                       label={tag}
                       sx={{
                         bgcolor: "secondary.main",
-                        color: "primary.main",
+                        color: "accent.main",
                         fontWeight: 700,
                         fontSize: "0.75rem",
                         letterSpacing: "1px",

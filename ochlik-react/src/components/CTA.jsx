@@ -300,7 +300,7 @@ const CTA = () => {
                   py: 2,
                   px: 6,
                   fontSize: "1.1rem",
-                  bgcolor: "secondary.main",
+                  bgcolor: "primary.main",
                   color: "white",
                   minWidth: "300px",
                   "&:hover": {
