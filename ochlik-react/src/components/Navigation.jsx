@@ -69,7 +69,8 @@ const Navigation = () => {
                     fontWeight: 600,
                     fontSize: "0.9rem",
                     letterSpacing: "1px",
-                    position: "center",
+                    position: "relative",
+                    display: "inline-block",
                     "&::after": {
                       content: '""',
                       position: "absolute",
@@ -78,7 +79,7 @@ const Navigation = () => {
                       width: 0,
                       height: "3px",
                       bgcolor: "#f5c842",
-                      transition: "width 0.3s",
+                      transition: "width 0.3s ease-in-out",
                     },
                     "&:hover::after": {
                       width: "100%",

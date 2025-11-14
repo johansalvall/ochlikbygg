@@ -200,7 +200,7 @@ const Footer = () => {
                 <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
                   <FaMapMarkerAlt
                     style={{
-                      color: "primary.main",
+                      color: "#f7d66b",
                       marginTop: "4px",
                       fontSize: "1rem",
                       flexShrink: 0,
@@ -208,7 +208,7 @@ const Footer = () => {
                   />
                   <Typography
                     variant="body2"
-                    sx={{ color: "#aaa", fontSize: "0.9rem" }}
+                    sx={{ color: "text.light", fontSize: "0.9rem" }}
                   >
                     Hässleholmsvägen 22
                     <br />
@@ -224,31 +224,33 @@ const Footer = () => {
                 >
                   <FaPhone
                     style={{
-                      color: "",
+                      color: "#f7d66b",
                       marginTop: "4px",
                       fontSize: "1rem",
                       flexShrink: 0,
                     }}
                   />
                   <Box>
-                    <Typography variant="body2" sx={{ fontSize: "0.9rem" }}>
+                    <Typography variant="body2" sx={{ fontSize: "0.9rem", color: "text.light", }}>Adam Ochlik: 
                       <Link
                         href="tel:0737233536"
                         sx={{
-                          color: "#aaa",
+                          color: "text.light",
                           textDecoration: "none",
+                          paddingLeft: "5px",
                           "&:hover": { color: "accent.light" },
                         }}
                       >
-                        073-723 35 36
+                          073-723 35 36
                       </Link>
                     </Typography>
-                    <Typography variant="body2" sx={{ fontSize: "0.9rem" }}>
+                    <Typography variant="body2" sx={{ fontSize: "0.9rem", color: "text.light", }}>Tomasz Ochlik: 
                       <Link
                         href="tel:0730940503"
                         sx={{
-                          color: "#aaa",
+                          color: "text.light",
                           textDecoration: "none",
+                          paddingLeft: "5px",
                           "&:hover": { color: "accent.light" },
                         }}
                       >
@@ -260,18 +262,18 @@ const Footer = () => {
                 <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
                   <FaEnvelope
                     style={{
-                      color: "primary.main",
+                      color: "#f7d66b",
                       marginTop: "4px",
                       fontSize: "1rem",
                       flexShrink: 0,
                     }}
                   />
                   <Box>
-                    <Typography variant="body2" sx={{ fontSize: "0.9rem" }}>
+                    <Typography variant="body2" sx={{ fontSize: "0.9rem", color: "text.light" }}>
                       <Link
                         href="mailto:info@ochlikbygg.se"
                         sx={{
-                          color: "#aaa",
+                          color: "text.light",
                           textDecoration: "none",
                           "&:hover": { color: "accent.light" },
                         }}

@@ -17,24 +17,11 @@ import {
   ChevronRight,
 } from "@mui/icons-material";
 import SectionTitle from "./SectionTitle";
+import { fadeInUp, stagger } from "../animations/variants";
+import { useImageCarousel } from "../hooks/useImageCarousel";
 
 const References = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  };
-
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
 
   const projects = [
     {
@@ -147,6 +134,14 @@ const References = () => {
     },
   ];
 
+  // Use custom carousel hook
+  const {
+    currentIndex: currentImageIndex,
+    handlePrev: handlePrevImage,
+    handleNext: handleNextImage,
+    goToIndex: setCurrentImageIndex,
+  } = useImageCarousel(selectedProject?.galleryImages?.length || 0);
+
   const handleOpen = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
@@ -155,22 +150,6 @@ const References = () => {
   const handleClose = () => {
     setSelectedProject(null);
     setCurrentImageIndex(0);
-  };
-
-  const handlePrevImage = () => {
-    if (selectedProject && selectedProject.galleryImages) {
-      setCurrentImageIndex((prev) =>
-        prev === 0 ? selectedProject.galleryImages.length - 1 : prev - 1
-      );
-    }
-  };
-
-  const handleNextImage = () => {
-    if (selectedProject && selectedProject.galleryImages) {
-      setCurrentImageIndex((prev) =>
-        prev === selectedProject.galleryImages.length - 1 ? 0 : prev + 1
-      );
-    }
   };
 
   return (
@@ -189,7 +168,7 @@ const References = () => {
             sx={{ justifyContent: "center" }}
           >
             {projects.map((project, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid xs={12} sm={6} md={4} key={index}>
                 <Card
                   component={motion.div}
                   variants={fadeInUp}
@@ -498,7 +477,7 @@ const References = () => {
                       key={tagIndex}
                       label={tag}
                       sx={{
-                        bgcolor: "secondary.main",
+                        bgcolor: "primary.main",
                         color: "white",
                         fontWeight: 700,
                         fontSize: "0.75rem",

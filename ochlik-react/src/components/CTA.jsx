@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Box,
@@ -6,13 +6,15 @@ import {
   Typography,
   TextField,
   Button,
-  Stack,
   Alert,
   Snackbar,
+  Stack,
   Grid,
-  Link,
 } from "@mui/material";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import ContactInfo from "./ContactInfo";
+import CaptchaField from "./CaptchaField";
+import { useCaptcha } from "../hooks/useCaptcha";
+import { fadeInUp } from "../animations/variants";
 
 const CTA = () => {
   const [formData, setFormData] = useState({
@@ -23,29 +25,15 @@ const CTA = () => {
   });
   const [openSuccess, setOpenSuccess] = useState(false);
 
-  // Custom CAPTCHA state
-  const [captchaQuestion, setCaptchaQuestion] = useState({
-    num1: 0,
-    num2: 0,
-    answer: 0,
-  });
-  const [captchaInput, setCaptchaInput] = useState("");
-  const [captchaError, setCaptchaError] = useState(false);
-
-  // Generate a new math question
-  const generateCaptcha = () => {
-    const num1 = Math.floor(Math.random() * 10) + 1; // 1-10
-    const num2 = Math.floor(Math.random() * 10) + 1; // 1-10
-    const answer = num1 + num2;
-    setCaptchaQuestion({ num1, num2, answer });
-    setCaptchaInput("");
-    setCaptchaError(false);
-  };
-
-  // Generate captcha on component mount
-  useEffect(() => {
-    generateCaptcha();
-  }, []);
+  // Use custom CAPTCHA hook
+  const {
+    captchaQuestion,
+    captchaInput,
+    captchaError,
+    handleCaptchaChange,
+    validateCaptcha,
+    resetCaptcha,
+  } = useCaptcha();
 
   const handleChange = (e) => {
     setFormData({
@@ -54,17 +42,11 @@ const CTA = () => {
     });
   };
 
-  const handleCaptchaChange = (e) => {
-    setCaptchaInput(e.target.value);
-    setCaptchaError(false);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Verify CAPTCHA
-    if (parseInt(captchaInput) !== captchaQuestion.answer) {
-      setCaptchaError(true);
+    // Verify CAPTCHA using the hook's validation
+    if (!validateCaptcha()) {
       return;
     }
 
@@ -80,7 +62,7 @@ const CTA = () => {
       email: "",
       message: "",
     });
-    generateCaptcha();
+    resetCaptcha();
   };
 
   const handleCloseSnackbar = () => {
@@ -98,8 +80,9 @@ const CTA = () => {
       <Container maxWidth="lg">
         <Box
           component={motion.div}
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true }}
           sx={{ textAlign: "center", mb: 4 }}
         >
@@ -142,7 +125,6 @@ const CTA = () => {
           >
             {/* Contact Information Section */}
             <Grid 
-              item 
               xs={12} 
               lg="auto"
               sx={{
@@ -150,296 +132,11 @@ const CTA = () => {
                 flexBasis: { xs: "100%", lg: "calc(30% - 16px)" }
               }}
             >
-            <Box
-              component={motion.div}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              sx={{
-                bgcolor: "rgba(255, 255, 255, 0.1)",
-                p: { xs: 2, sm: 3, md: 4 },
-                borderRadius: 0,
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                height: "100%",
-                mb: { xs: 0, lg: 0 },
-              }}
-            >
-              <Typography
-                variant="h4"
-                sx={{
-                  color: "white",
-                  mb: { xs: 2, sm: 3 },
-                  fontWeight: 700,
-                  fontSize: { xs: "1.5rem", sm: "1.75rem", md: "2rem" },
-                }}
-              >
-                KONTAKTA OSS
-              </Typography>
-
-              <Stack spacing={{ xs: 2, sm: 2.5, md: 3 }}>
-                {/* Phone */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: { xs: 1.5, sm: 2 },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      color: "accent.light",
-                      mt: 0.5,
-                      fontSize: { xs: "1rem", sm: "1.25rem" },
-                    }}
-                  >
-                    <FaPhone />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: "white",
-                        mb: 0.5,
-                        fontSize: { xs: "0.95rem", sm: "1rem" },
-                        fontWeight: 600,
-                      }}
-                    >
-                      Telefon
-                    </Typography>
-                    <Box
-                      sx={{
-                        mb: 1,
-                        display: "flex",
-                        flexDirection: { xs: "column", sm: "row" },
-                        justifyContent: { sm: "space-between" },
-                        alignItems: { xs: "flex-start", sm: "center" },
-                        gap: { xs: 0.25, sm: 0 },
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#ddd",
-                          fontSize: { xs: "0.9rem", sm: "0.95rem" },
-                        }}
-                      >
-                        Adam Ochlik
-                      </Typography>
-                      <Link
-                        href="tel:0737233536"
-                        sx={{
-                          color: "#ddd",
-                          textDecoration: "none",
-                          fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                          pl: { xs: 0, sm: 0.625 },
-                          "&:hover": { color: "accent.light" },
-                        }}
-                      >
-                        073-723 35 36
-                      </Link>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: { xs: "column", sm: "row" },
-                        justifyContent: { sm: "space-between" },
-                        alignItems: { xs: "flex-start", sm: "center" },
-                        gap: { xs: 0.25, sm: 0 },
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          color: "#ddd",
-                          fontSize: { xs: "0.9rem", sm: "0.95rem" },
-                        }}
-                      >
-                        Tomasz Ochlik
-                      </Typography>
-                      <Link
-                        href="tel:0730940503"
-                        sx={{
-                          color: "#ddd",
-                          textDecoration: "none",
-                          fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                          pl: { xs: 0, sm: 0.625 },
-                          "&:hover": { color: "accent.light" },
-                        }}
-                      >
-                        073-094 05 03
-                      </Link>
-                    </Box>
-                  </Box>
-                </Box>
-
-                {/* Email */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: { xs: 1.5, sm: 2 },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      color: "accent.light",
-                      mt: 0.5,
-                      fontSize: { xs: "1rem", sm: "1.25rem" },
-                    }}
-                  >
-                    <FaEnvelope />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: "white",
-                        mb: 0.5,
-                        fontSize: { xs: "0.95rem", sm: "1rem" },
-                        fontWeight: 600,
-                      }}
-                    >
-                      E-post
-                    </Typography>
-                    <Link
-                      href="mailto:info@ochlikbygg.se"
-                      sx={{
-                        color: "#ddd",
-                        textDecoration: "none",
-                        display: "block",
-                        fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                        "&:hover": { color: "accent.light" },
-                      }}
-                    >
-                      info@ochlikbygg.se
-                    </Link>
-                    <Link
-                      href="mailto:adam@ochlikbygg.se"
-                      sx={{
-                        color: "#ddd",
-                        textDecoration: "none",
-                        display: "block",
-                        fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                        "&:hover": { color: "accent.light" },
-                      }}
-                    >
-                      adam@ochlikbygg.se
-                    </Link>
-                  </Box>
-                </Box>
-
-                {/* Address */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: { xs: 1.5, sm: 2 },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      color: "accent.light",
-                      mt: 0.5,
-                      fontSize: { xs: "1rem", sm: "1.25rem" },
-                    }}
-                  >
-                    <FaMapMarkerAlt />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: "white",
-                        mb: 0.5,
-                        fontSize: { xs: "0.95rem", sm: "1rem" },
-                        fontWeight: 600,
-                      }}
-                    >
-                      Adress
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "#ddd",
-                        fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      }}
-                    >
-                      Hässleholmsvägen 22
-                      <br />
-                      285 33 Markaryd
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Business Hours */}
-                <Box
-                  sx={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: { xs: 1.5, sm: 2 },
-                  }}
-                >
-                  <Box
-                    sx={{
-                      color: "accent.light",
-                      mt: 0.5,
-                      fontSize: { xs: "1rem", sm: "1.25rem" },
-                    }}
-                  >
-                    <FaClock />
-                  </Box>
-                  <Box>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        color: "white",
-                        mb: 0.5,
-                        fontSize: { xs: "0.95rem", sm: "1rem" },
-                        fontWeight: 600,
-                      }}
-                    >
-                      Öppettider
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "#ddd",
-                        fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      }}
-                    >
-                      Måndag - Fredag: 07:00 - 17:00
-                      <br />
-                      Lördag - Söndag: Stängt
-                    </Typography>
-                  </Box>
-                </Box>
-              </Stack>
-
-              <Box
-                sx={{
-                  mt: { xs: 3, md: 4 },
-                  pt: { xs: 3, md: 4 },
-                  borderTop: "1px solid rgba(255, 255, 255, 0.2)",
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: "#ddd",
-                    lineHeight: 1.8,
-                    fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                  }}
-                >
-                  Vi svarar normalt inom 24 timmar. För brådskande ärenden, ring
-                  oss direkt!
-                </Typography>
-              </Box>
-            </Box>
+              <ContactInfo />
           </Grid>
 
           {/* Form Section */}
           <Grid 
-            item 
             xs={12} 
             lg="auto"
             sx={{
@@ -458,6 +155,7 @@ const CTA = () => {
                 bgcolor: "white",
                 p: { xs: 2, sm: 3, md: 4 },
                 borderRadius: 0,
+                height: "100%",
               }}
             >
               <Stack spacing={{ xs: 2, sm: 2.5, md: 3 }}>
@@ -548,86 +246,12 @@ const CTA = () => {
                 />
 
                 {/* Custom CAPTCHA - Math Question */}
-                <Box
-                  sx={{
-                    p: { xs: 1.5, sm: 2 },
-                    bgcolor: "rgba(61, 90, 128, 0.05)",
-                    border: "1px solid",
-                    borderColor: captchaError ? "error.main" : "primary.light",
-                    transition: "border-color 0.3s",
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      mb: { xs: 1, sm: 1.5 },
-                      textAlign: "center",
-                      fontSize: { xs: "0.85rem", sm: "0.95rem" },
-                      fontWeight: 600,
-                    }}
-                  >
-                    Säkerhetsverifiering: Lös följande uppgift
-                  </Typography>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: { xs: 1, sm: 1.5 },
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontWeight: 700,
-                        color: "primary.main",
-                        fontSize: { xs: "1.1rem", sm: "1.3rem" },
-                      }}
-                    >
-                      {captchaQuestion.num1} + {captchaQuestion.num2} =
-                    </Typography>
-                    <TextField
-                      required
-                      type="number"
-                      value={captchaInput}
-                      onChange={handleCaptchaChange}
-                      placeholder="?"
-                      error={captchaError}
-                      sx={{
-                        width: { xs: "70px", sm: "80px" },
-                        "& .MuiOutlinedInput-root": {
-                          bgcolor: "white",
-                          fontSize: { xs: "1rem", sm: "1.2rem" },
-                          fontWeight: 600,
-                          textAlign: "center",
-                          "&.Mui-focused fieldset": {
-                            borderColor: "primary.main",
-                            borderWidth: "2px",
-                          },
-                        },
-                        "& input": {
-                          textAlign: "center",
-                          padding: { xs: "6px", sm: "8px" },
-                        },
-                      }}
-                    />
-                  </Box>
-                  {captchaError && (
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: "error.main",
-                        fontWeight: 600,
-                        textAlign: "center",
-                        mt: 1,
-                        fontSize: "0.85rem",
-                      }}
-                    >
-                      Fel svar. Försök igen!
-                    </Typography>
-                  )}
-                </Box>
+                <CaptchaField
+                  captchaQuestion={captchaQuestion}
+                  captchaInput={captchaInput}
+                  captchaError={captchaError}
+                  onChange={handleCaptchaChange}
+                />
 
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                   <Button

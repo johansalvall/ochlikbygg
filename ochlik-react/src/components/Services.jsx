@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Typography, Grid } from "@mui/material";
 import {
   FaHardHat,
   FaTools,
@@ -9,22 +9,9 @@ import {
   FaCog,
 } from "react-icons/fa";
 import SectionTitle from "./SectionTitle";
+import { fadeInUp, stagger } from "../animations/variants";
 
 const Services = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 },
-  };
-
-  const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  };
-
   const services = [
     {
       icon: <FaHardHat />,
@@ -73,7 +60,7 @@ const Services = () => {
           sx={{ justifyContent: "center" }}
         >
           {services.map((service, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
+            <Grid xs={12} sm={6} md={4} key={index}>
               <Box
                 component={motion.div}
                 variants={fadeInUp}
