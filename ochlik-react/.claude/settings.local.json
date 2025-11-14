@@ -5,7 +5,9 @@
       "Bash(npm uninstall:*)",
       "Bash(test:*)",
       "WebFetch(domain:johansson-bygg.se)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(node:*)",
+      "Bash(del:*)"
     ],
     "deny": [],
     "ask": []

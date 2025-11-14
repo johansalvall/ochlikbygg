@@ -18,19 +18,19 @@ const theme = createTheme({
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#1a1a1a',
+      main: '#a8a8a8ff ',
       light: '#2d2d2d',
-      dark: '#0d0d0d',
+      dark: '#cec0c0ff',
       contrastText: '#ffffff',
     },
     accent: {
-      main: '#f5c842',
+      main: '#000000ff',
       light: '#f7d66b',
       dark: '#d4a82f',
       contrastText: '#1a1a1a',
     },
     background: {
-      default: '#ffffff',
+      default: '#a38f8fff',
       paper: '#f5f5f5',
     },
     text: {

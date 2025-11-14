@@ -46,11 +46,14 @@ const References = () => {
       image: "/images/roofing/IMG_0555.jpeg",
       galleryImages: [
         "/images/roofing/IMG_0555.jpeg",
-        "/images/roofing/IMG_1031.jpeg",
+        "/images/roofing/66B5E8CD-B414-452B-A7B1-73C9FCDF046C.jpg",
+        "/images/roofing/AE4076CD-B701-47E3-ADB8-24AB795469BC.jpg",
+        "/images/roofing/IMG_1038.jpeg",
+        "/images/roofing/IMG_1094.jpeg",
+        "/images/roofing/IMG_1099.jpeg",
         "/images/roofing/IMG_2956.jpeg",
-        "/images/roofing/IMG_5147.jpeg",
         "/images/roofing/IMG_7593.jpeg",
-        "/images/roofing/IMG_4822.jpeg",
+        "/images/roofing/IMG_2973.jpeg",
       ],
       tags: ["TAK", "ENERGI"],
     },
@@ -81,10 +84,11 @@ const References = () => {
       galleryImages: [
         "/images/windows_frontage/IMG_1164-min.jpeg",
         "/images/windows_frontage/IMG_1107-min.jpeg",
-        "/images/windows_frontage/IMG_3022-min.jpeg",
         "/images/windows_frontage/IMG_4703-min.jpeg",
         "/images/windows_frontage/IMG_4709-min.jpeg",
+        "/images/windows_frontage/IMG_4988-min.jpeg",
         "/images/windows_frontage/IMG_1533-min.jpeg",
+        "/images/windows_frontage/IMG_3024-min.jpeg",
       ],
       tags: ["FASAD", "FÖNSTER", "ENERGI"],
     },
@@ -94,14 +98,15 @@ const References = () => {
         "Professionellt grundarbete som säkerställer en stabil och hållbar grund för ditt byggprojekt.",
       detailedDescription:
         "En stabil grund är avgörande för varje byggprojekt. Våra grundarbeten ger dig trygghet genom:\n\n• Professionell markberedning och dränering\n• Platta på mark, källare eller krypgrund enligt dina behov\n• Korrekt armering och betonggjutning för maximal stabilitet\n• Fuktsäkra lösningar som skyddar mot markfukt\n• Långsiktig hållbarhet och säkerhet för din byggnad\n\nVi tar hand om allt från markundersökning till färdig grund, och säkerställer att allt uppfyller byggnadskraven. Oavsett om det gäller nybyggnation, tillbyggnad eller grundförstärkning - vi har erfarenheten.",
-      image: "/images/foundation_work/IMG_2201-min.jpeg",
+      image: "/images/foundation_work/IMG_2201-min.jpg",
       galleryImages: [
-        "/images/foundation_work/IMG_2201-min.jpeg",
-        "/images/foundation_work/IMG_2272-min.jpeg",
-        "/images/foundation_work/IMG_5174-min.jpeg",
-        "/images/foundation_work/IMG_5267-min.jpeg",
-        "/images/foundation_work/IMG_2310-min.jpeg",
-        "/images/foundation_work/IMG_5301-min.jpeg",
+        "/images/foundation_work/IMG_2310-min.jpg",
+        "/images/foundation_work/IMG_2272-min.jpg",
+        "/images/foundation_work/IMG_2332-min.jpg",
+        "/images/foundation_work/IMG_2201-min.jpg",
+        "/images/foundation_work/IMG_5267-min.jpg",
+        "/images/foundation_work/IMG_5301-min.jpg",
+        "/images/foundation_work/IMG_5188-min.jpg",
       ],
       tags: ["GRUND", "BETONG"],
     },
@@ -111,14 +116,15 @@ const References = () => {
         "Snygga och hållbara trallösningar för uteplats, altan och terrass som förlänger din bostadsyta utomhus.",
       detailedDescription:
         "En välbyggd trall eller altan skapar ett fantastiskt utomhusutrymme för familjen. För dig innebär det:\n\n• Ett trivsamt uterum för avkoppling och umgänge\n• Ökat bostadsvärde och förbättrad livskvalitet\n• Underhållsfria material som tål väder året runt\n• Professionell nivåsättning och dränering\n• Räcken och trappor som är både säkra och vackra\n\nVi bygger allt från små uteplatser till stora altaner och pooltrallningar. Vi hjälper dig välja rätt material - oavsett om du föredrar traditionellt trä eller moderna kompositmaterial som kräver minimalt underhåll.",
-      image: "/images/trolley/IMG_0931-min.jpeg",
+      image: "/images/trolley/IMG_1788-min.jpeg",
       galleryImages: [
-        "/images/trolley/IMG_0931-min.jpeg",
         "/images/trolley/IMG_1254-min.jpeg",
-        "/images/trolley/IMG_1786-min.jpeg",
-        "/images/trolley/IMG_3009-min.jpeg",
+        "/images/trolley/IMG_1265-min.jpeg",
+        "/images/trolley/IMG_1268-min.jpeg",
+        "/images/trolley/IMG_1788-min.jpeg",
         "/images/trolley/IMG_3555-min.jpeg",
-        "/images/trolley/IMG_6182-min.jpeg",
+        "/images/trolley/IMG_3557-min.jpeg",
+        "/images/trolley/IMG_3558-min.jpeg",
       ],
       tags: ["TRALL", "UTEPLATS", "ALTAN"],
     },
@@ -128,14 +134,14 @@ const References = () => {
         "Totalrenoveringar och ombyggnationer som moderniserar ditt hem och anpassar det efter dina behov.",
       detailedDescription:
         "En renovering kan förvandla ditt hem från grunden. Våra renoveringstjänster innebär för dig:\n\n• Modernisering av kök, badrum och andra utrymmen\n• Förbättrad planlösning som passar din livssituation\n• Uppdaterade el- och VVS-installationer enligt moderna standarder\n• Ökad energieffektivitet med nya isolerings- och ventilationslösningar\n• Högre fastighetsvärde och bättre boendekvalitet\n\nVi hanterar allt från mindre badrumsrenoveringar till totalrenoveringar av hela huset. Med vår erfarenhet guidar vi dig genom hela processen - från planering och design till färdigt resultat. Vi samordnar alla hantverkare så att projektet flyter på smidigt.",
-      image: "/images/renovations/IMG_4437.jpeg",
+      image: "/images/renovations/IMG_4639.jpeg",
       galleryImages: [
         "/images/renovations/IMG_4437.jpeg",
         "/images/renovations/IMG_4543.jpeg",
-        "/images/renovations/IMG_4651.jpeg",
+        "/images/renovations/IMG_4667.jpeg",
         "/images/renovations/IMG_5030.jpeg",
         "/images/renovations/IMG_5085.jpeg",
-        "/images/renovations/IMG_4819.jpeg",
+        "/images/renovations/IMG_6074.jpeg",
       ],
       tags: ["RENOVERING", "BADRUM", "KÖK"],
     },
@@ -198,9 +204,7 @@ const References = () => {
                     flexDirection: "column",
                     cursor: "pointer",
                     maxWidth: "400px",
-                    border: "1px solid",
-                    borderColor: "primary.main",
-                    boxShadow: "0 8px 24px rgba(61, 90, 128, 0.15)",
+                    boxShadow: "16px 16px 16px rgba(61, 90, 128, 0.15)",
                   }}
                 >
                   <Box
@@ -211,6 +215,19 @@ const References = () => {
                       backgroundPosition: "center",
                       position: "relative",
                       overflow: "hidden",
+                      "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        backgroundColor: "rgba(255, 255, 255, 0.45)",
+                        transition: "background-color 0.3s",
+                      },
+                      "&:hover::before": {
+                        backgroundColor: "rgba(255, 255, 255, 0.05)",
+                      },
                       "&:hover .overlay": {
                         transform: "translateY(0)",
                       },
@@ -263,13 +280,12 @@ const References = () => {
                           key={tagIndex}
                           label={tag}
                           sx={{
-                            bgcolor: "secondary.main",
-                            color: "accent.main",
+                            bgcolor: "primary.main",
+                            color: "#ffffffff",
                             fontWeight: 700,
                             fontSize: "0.75rem",
                             letterSpacing: "1px",
                             border: "2px solid",
-                            borderColor: "primary.main",
                           }}
                         />
                       ))}
@@ -483,12 +499,10 @@ const References = () => {
                       label={tag}
                       sx={{
                         bgcolor: "secondary.main",
-                        color: "accent.main",
+                        color: "white",
                         fontWeight: 700,
                         fontSize: "0.75rem",
                         letterSpacing: "1px",
-                        border: "2px solid",
-                        borderColor: "primary.main",
                       }}
                     />
                   ))}

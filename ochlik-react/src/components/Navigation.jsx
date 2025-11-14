@@ -1,75 +1,158 @@
 import { motion } from "framer-motion";
-import { AppBar, Toolbar, Box, Link, Container } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Link,
+  Container,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+} from "@mui/material";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useState } from "react";
 
 const Navigation = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const menuItems = [
+    { text: "HEM", href: "hem" },
+    { text: "TJÄNSTER", href: "referenser" },
+    { text: "OM OSS", href: "om-oss" },
+    { text: "KONTAKT", href: "kontakt" },
+  ];
+
   return (
-    <AppBar
-      position="sticky"
-      component={motion.nav}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      sx={{ bgcolor: "secondary.main" }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-          <Box>
-            <Link href="#hem" sx={{ display: "flex", alignItems: "center" }}>
-              <motion.img
-                src="/images/logo.gif"
-                alt="Ochlik Bygg AB"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  height: "55px",
-                  width: "auto",
-                  cursor: "pointer",
-                }}
-              />
-            </Link>
-          </Box>
-          <Box sx={{ display: "flex", gap: { xs: 2, md: 4 } }}>
-            {["HEM", "TJÄNSTER", "OM OSS", "KONTAKT"].map((text, index) => (
+    <>
+      <AppBar
+        position="absolute"
+        component={motion.nav}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        elevation={0}
+        sx={{
+          marginTop: 1,
+          bgcolor: "transparent",
+          boxShadow: "none",
+          background: "none",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
+            <Box>
+              <Link href="#hem" sx={{ display: "flex", alignItems: "center" }}>
+                <Box
+                  component={motion.img}
+                  src="/images/combined_logo.png"
+                  alt="Ochlik Bygg AB"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                  sx={{
+                    height: { xs: "60px", sm: "80px", md: "100px", lg: "130px" },
+                    width: "auto",
+                    cursor: "pointer",
+                  }}
+                />
+              </Link>
+            </Box>
+            {/* Desktop Menu */}
+            <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
+              {menuItems.map((item, index) => (
+                <Link
+                  key={index}
+                  href={`#${item.href}`}
+                  sx={{
+                    color: "white",
+                    textDecoration: "none",
+                    fontWeight: 600,
+                    fontSize: "0.9rem",
+                    letterSpacing: "1px",
+                    position: "center",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      bottom: "-5px",
+                      left: 0,
+                      width: 0,
+                      height: "3px",
+                      bgcolor: "#f5c842",
+                      transition: "width 0.3s",
+                    },
+                    "&:hover::after": {
+                      width: "100%",
+                    },
+                  }}
+                >
+                  {item.text}
+                </Link>
+              ))}
+            </Box>
+
+            {/* Mobile Menu Button */}
+            <IconButton
+              sx={{ display: { xs: "block", md: "none" }, color: "white" }}
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <FaBars size={24} />
+            </IconButton>
+          </Toolbar>
+        </Container>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="right"
+        open={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+        sx={{
+          "& .MuiDrawer-paper": {
+            width: 280,
+            bgcolor: "secondary.main",
+            color: "white",
+          },
+        }}
+      >
+        <Box sx={{ p: 2, display: "flex", justifyContent: "flex-end" }}>
+          <IconButton
+            onClick={() => setMobileMenuOpen(false)}
+            sx={{ color: "white" }}
+          >
+            <FaTimes size={24} />
+          </IconButton>
+        </Box>
+        <List>
+          {menuItems.map((item, index) => (
+            <ListItem key={index} sx={{ py: 0 }}>
               <Link
-                key={index}
-                href={`#${
-                  text === "HEM"
-                    ? "hem"
-                    : text === "TJÄNSTER"
-                    ? "referenser"
-                    : text === "OM OSS"
-                    ? "om-oss"
-                    : "kontakt"
-                }`}
+                href={`#${item.href}`}
+                onClick={() => setMobileMenuOpen(false)}
                 sx={{
                   color: "white",
                   textDecoration: "none",
                   fontWeight: 600,
-                  fontSize: { xs: "0.8rem", md: "0.9rem" },
+                  fontSize: "1.1rem",
                   letterSpacing: "1px",
-                  position: "relative",
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: "-5px",
-                    left: 0,
-                    width: 0,
-                    height: "3px",
-                    bgcolor: "#f5c842",
-                    transition: "width 0.3s",
-                  },
-                  "&:hover::after": {
-                    width: "100%",
+                  width: "100%",
+                  py: 2,
+                  px: 3,
+                  display: "block",
+                  transition: "all 0.3s",
+                  "&:hover": {
+                    bgcolor: "rgba(255, 255, 255, 0.1)",
+                    borderLeft: "4px solid #f5c842",
+                    paddingLeft: "calc(1.5rem - 4px)",
                   },
                 }}
               >
-                {text}
+                {item.text}
               </Link>
-            ))}
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </>
   );
 };
 

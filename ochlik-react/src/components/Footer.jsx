@@ -237,7 +237,7 @@ const Footer = () => {
                         sx={{
                           color: "#aaa",
                           textDecoration: "none",
-                          "&:hover": { color: "accent.main" },
+                          "&:hover": { color: "accent.light" },
                         }}
                       >
                         073-723 35 36
@@ -249,7 +249,7 @@ const Footer = () => {
                         sx={{
                           color: "#aaa",
                           textDecoration: "none",
-                          "&:hover": { color: "accent.main" },
+                          "&:hover": { color: "accent.light" },
                         }}
                       >
                         073-094 05 03
@@ -273,7 +273,7 @@ const Footer = () => {
                         sx={{
                           color: "#aaa",
                           textDecoration: "none",
-                          "&:hover": { color: "accent.main" },
+                          "&:hover": { color: "accent.light" },
                         }}
                       >
                         info@ochlikbygg.se
@@ -306,7 +306,7 @@ const Footer = () => {
                       bgcolor: "#2d2d2d",
                       color: "#aaa",
                       "&:hover": {
-                        bgcolor: "accent.main",
+                        bgcolor: "accent.light",
                         color: "#1a1a1a",
                       },
                       width: 40,
@@ -325,7 +325,7 @@ const Footer = () => {
                       bgcolor: "#2d2d2d",
                       color: "#aaa",
                       "&:hover": {
-                        bgcolor: "accent.main",
+                        bgcolor: "accent.light",
                         color: "#1a1a1a",
                       },
                       width: 40,
