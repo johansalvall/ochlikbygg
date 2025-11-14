@@ -125,9 +125,31 @@ const CTA = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
-          {/* Contact Information Section */}
-          <Grid item xs={12} md={5}>
+        <Box sx={{ 
+          display: "flex", 
+          justifyContent: "center",
+          width: "100%"
+        }}>
+          <Grid 
+            container 
+            spacing={{ xs: 3, sm: 3, md: 4 }}
+            sx={{
+              maxWidth: { xs: "100%", lg: "1200px" },
+              width: "100%",
+              margin: "0 auto",
+              justifyContent: "center"
+            }}
+          >
+            {/* Contact Information Section */}
+            <Grid 
+              item 
+              xs={12} 
+              lg="auto"
+              sx={{
+                width: { xs: "100%", lg: "calc(30% - 16px)" },
+                flexBasis: { xs: "100%", lg: "calc(30% - 16px)" }
+              }}
+            >
             <Box
               component={motion.div}
               initial={{ opacity: 0, y: 30 }}
@@ -141,6 +163,7 @@ const CTA = () => {
                 backdropFilter: "blur(10px)",
                 border: "1px solid rgba(255, 255, 255, 0.2)",
                 height: "100%",
+                mb: { xs: 0, lg: 0 },
               }}
             >
               <Typography
@@ -415,7 +438,15 @@ const CTA = () => {
           </Grid>
 
           {/* Form Section */}
-          <Grid item xs={12} md={7}>
+          <Grid 
+            item 
+            xs={12} 
+            lg="auto"
+            sx={{
+              width: { xs: "100%", lg: "calc(70% - 16px)" },
+              flexBasis: { xs: "100%", lg: "calc(70% - 16px)" }
+            }}
+          >
             <Box
               component={motion.form}
               onSubmit={handleSubmit}
@@ -628,6 +659,7 @@ const CTA = () => {
             </Box>
           </Grid>
         </Grid>
+        </Box>
       </Container>
 
       <Snackbar
