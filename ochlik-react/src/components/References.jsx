@@ -11,7 +11,11 @@ import {
   Modal,
   IconButton,
 } from "@mui/material";
-import { Close as CloseIcon, ChevronLeft, ChevronRight } from "@mui/icons-material";
+import {
+  Close as CloseIcon,
+  ChevronLeft,
+  ChevronRight,
+} from "@mui/icons-material";
 import SectionTitle from "./SectionTitle";
 
 const References = () => {
@@ -73,12 +77,12 @@ const References = () => {
         "Modernisera ditt hem med nya fönster och fräsch fasad för bättre energiprestanda och utseende.",
       detailedDescription:
         "Nya fönster och en uppdaterad fasad förvandlar ditt hem både utvändigt och invändigt. Detta innebär för dig:\n\n• Dramatiskt minskade värmeförluster - upp till 30% lägre energikostnader\n• Bättre ljudisolering från trafikbuller\n• Modernare utseende som ökar fastighetsvärdet\n• Underhållsfria material som håller i decennier\n• Förbättrat inomhusklimat med moderna ventilationslösningar\n\nVi hjälper dig välja rätt fönster och fasadlösning för just ditt hus. Från traditionella träfönster till moderna energieffektiva alternativ - vi hanterar installation och fasadarbete så att allt blir perfekt.",
-      image: "/images/windows_frontage/IMG_1107.jpeg",
+      image: "/images/windows_frontage/IMG_1164.jpeg",
       galleryImages: [
+        "/images/windows_frontage/IMG_1164.jpeg",
         "/images/windows_frontage/IMG_1107.jpeg",
         "/images/windows_frontage/IMG_3022.jpeg",
         "/images/windows_frontage/IMG_4703.jpeg",
-        "/images/windows_frontage/IMG_1164.jpeg",
         "/images/windows_frontage/IMG_4709.jpeg",
         "/images/windows_frontage/IMG_1533.jpeg",
       ],
@@ -194,6 +198,9 @@ const References = () => {
                     flexDirection: "column",
                     cursor: "pointer",
                     maxWidth: "400px",
+                    border: "1px solid",
+                    borderColor: "accent.main",
+                    boxShadow: "0 8px 24px rgba(61, 90, 128, 0.15)",
                   }}
                 >
                   <Box
@@ -236,11 +243,17 @@ const References = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  <CardContent sx={{ flexGrow: 1 }}>
+                  <CardContent
+                    sx={{
+                      flexGrow: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
                     <Typography
                       variant="body1"
                       color="text.primary"
-                      sx={{ mb: 2 }}
+                      sx={{ mb: 2, flexGrow: 1 }}
                     >
                       {project.description}
                     </Typography>
@@ -329,7 +342,9 @@ const References = () => {
                       <motion.img
                         key={currentImageIndex}
                         src={selectedProject.galleryImages[currentImageIndex]}
-                        alt={`${selectedProject.title} projekt ${currentImageIndex + 1}`}
+                        alt={`${selectedProject.title} projekt ${
+                          currentImageIndex + 1
+                        }`}
                         drag="x"
                         dragConstraints={{ left: 0, right: 0 }}
                         dragElastic={0.2}
@@ -403,8 +418,58 @@ const References = () => {
                         fontWeight: 600,
                       }}
                     >
-                      {currentImageIndex + 1} / {selectedProject.galleryImages.length}
+                      {currentImageIndex + 1} /{" "}
+                      {selectedProject.galleryImages.length}
                     </Box>
+                  </Box>
+                )}
+
+              {/* Thumbnail Gallery */}
+              {selectedProject.galleryImages &&
+                selectedProject.galleryImages.length > 1 && (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      gap: 1.5,
+                      p: 2,
+                      bgcolor: "#f5f5f5",
+                      overflowX: "auto",
+                      "&::-webkit-scrollbar": {
+                        height: 8,
+                      },
+                      "&::-webkit-scrollbar-thumb": {
+                        bgcolor: "primary.main",
+                        borderRadius: 4,
+                      },
+                    }}
+                  >
+                    {selectedProject.galleryImages.map((image, index) => (
+                      <Box
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        sx={{
+                          width: 80,
+                          height: 80,
+                          flexShrink: 0,
+                          backgroundImage: `url('${image}')`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          cursor: "pointer",
+                          border: "3px solid",
+                          borderColor:
+                            currentImageIndex === index
+                              ? "accent.main"
+                              : "transparent",
+                          opacity: currentImageIndex === index ? 1 : 0.6,
+                          transition: "all 0.3s",
+                          "&:hover": {
+                            opacity: 1,
+                            borderColor: "accent.main",
+                          },
+                        }}
+                      />
+                    ))}
                   </Box>
                 )}
               <Box sx={{ p: 4 }}>
