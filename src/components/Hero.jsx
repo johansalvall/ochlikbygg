@@ -74,6 +74,7 @@ const Hero = () => {
                   mb: 3,
                   WebkitTextStroke: "2px #2a2a2a",
                   textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+                  fontSize: { xs: "2rem", sm: "3rem", md: "4.5rem" },
                 }}
               >
                 DIN{" "}
@@ -92,7 +93,7 @@ const Hero = () => {
                   mb: 4,
                   color: "#fcfcfcff",
                   WebkitTextStroke: "0.5px #000000ff",
-                  fontSize: "1.5rem",
+                  fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
                 }}
               >
                 Välkommen till Ochlik Bygg! Vi erbjuder professionella
