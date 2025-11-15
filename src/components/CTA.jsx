@@ -77,7 +77,7 @@ const CTA = () => {
         py: { xs: 6, sm: 8, md: 10 },
       }}
     >
-      <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3 } }}>
+      <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3, md: 4, lg: 6, xl: 8 } }}>
         <Box
           component={motion.div}
           variants={fadeInUp}
@@ -126,10 +126,11 @@ const CTA = () => {
             {/* Contact Information Section */}
             <Grid 
               xs={12} 
+              md="auto"
               lg="auto"
               sx={{
-                width: { xs: "100%", lg: "calc(30% - 16px)" },
-                flexBasis: { xs: "100%", lg: "calc(30% - 16px)" }
+                width: { xs: "100%", md: "calc(40% - 16px)", lg: "calc(30% - 16px)" },
+                flexBasis: { xs: "100%", md: "calc(40% - 16px)", lg: "calc(30% - 16px)" }
               }}
             >
               <ContactInfo />
@@ -138,10 +139,11 @@ const CTA = () => {
           {/* Form Section */}
           <Grid 
             xs={12} 
+            md="auto"
             lg="auto"
             sx={{
-              width: { xs: "100%", lg: "calc(70% - 16px)" },
-              flexBasis: { xs: "100%", lg: "calc(70% - 16px)" }
+              width: { xs: "100%", md: "calc(60% - 16px)", lg: "calc(70% - 16px)" },
+              flexBasis: { xs: "100%", md: "calc(60% - 16px)", lg: "calc(70% - 16px)" }
             }}
           >
             <Box

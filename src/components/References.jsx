@@ -155,7 +155,7 @@ const References = () => {
   return (
     <>
       <Box id="referenser" sx={{ py: 10, bgcolor: "white" }}>
-        <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3 } }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3, md: 4, lg: 6, xl: 8 } }}>
           <SectionTitle title="VÅRA TJÄNSTER" />
           <Grid
             container
@@ -306,13 +306,11 @@ const References = () => {
               <IconButton
                 onClick={handleClose}
                 sx={{
-                  position: "sticky",
-                  right: { xs: 8, sm: 8 },
+                  position: "absolute",
+                  right: 8,
                   top: 8,
-                  float: "right",
                   bgcolor: "rgba(255, 255, 255, 0.9)",
                   zIndex: 1000,
-                  m: 1,
                   "&:hover": {
                     bgcolor: "white",
                   },

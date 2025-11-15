@@ -54,7 +54,7 @@ const Hero = () => {
           zIndex: 1,
         }}
       />
-      <Container maxWidth="xl" sx={{ position: "relative", zIndex: 2 }}>
+      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 2, px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 } }}>
         <Grid container spacing={4} alignItems="center" justifyContent="center">
           <Grid item xs={12}>
             <Box
@@ -72,16 +72,11 @@ const Hero = () => {
                 transition={{ delay: 0.3 }}
                 sx={{
                   mb: 3,
-                  WebkitTextStroke: "2px #2a2a2a",
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
+                  textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
                   fontSize: { xs: "2.5rem", sm: "3rem", md: "4.5rem" },
                 }}
               >
-                DIN{" "}
-                <Box component="span" sx={{ color: "primary.main" }}>
-                  BYGGPARTNER
-                </Box>{" "}
-                I MARKARYD
+                DIN BYGGPARTNER I MARKARYD
               </Typography>
               <Typography
                 variant="h5"
@@ -92,7 +87,7 @@ const Hero = () => {
                 sx={{
                   mb: 4,
                   color: "#fcfcfcff",
-                  WebkitTextStroke: "0.5px #000000ff",
+                  textShadow: "1px 1px 6px rgba(0,0,0,0.7)",
                   fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
                 }}
               >

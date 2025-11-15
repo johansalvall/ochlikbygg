@@ -25,7 +25,7 @@ const Footer = () => {
         pb: 3,
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 } }}>
         <Grid container spacing={4} sx={{ mb: 5 }}>
           {/* About Us Column */}
           <Grid item xs={12} md={4}>

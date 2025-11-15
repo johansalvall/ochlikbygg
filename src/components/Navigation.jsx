@@ -39,13 +39,13 @@ const Navigation = () => {
           background: "none",
         }}
       >
-        <Container maxWidth="xl">
+        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 } }}>
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
             <Box>
               <Link href="#hem" sx={{ display: "flex", alignItems: "center" }}>
                 <Box
                   component={motion.img}
-                  src="/images/combined_logo.png"
+                  src="/images/logo.png"
                   alt="Ochlik Bygg AB"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}

@@ -45,7 +45,7 @@ const WhyUs = () => {
 
   return (
     <Box id="om-oss" sx={{ py: 10, bgcolor: "secondary.main", color: "white" }}>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4, lg: 6, xl: 8 } }}>
         <SectionTitle title="VARFÖR VÄLJA OSS?" white={true} />
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>

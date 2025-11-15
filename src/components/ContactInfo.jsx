@@ -286,6 +286,7 @@ const ContactInfo = () => {
             color: "#ddd",
             lineHeight: 1.8,
             fontSize: { xs: "0.85rem", sm: "0.95rem" },
+            maxWidth: "280px",
           }}
         >
           Vi svarar normalt inom 24 timmar. För brådskande ärenden, ring oss
