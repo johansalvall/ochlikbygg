@@ -90,10 +90,10 @@ const References = () => {
         "En stabil grund är avgörande för varje byggprojekt. Våra grundarbeten ger dig trygghet genom:\n\n• Professionell markberedning och dränering\n• Platta på mark, källare eller krypgrund enligt dina behov\n• Korrekt armering och betonggjutning för maximal stabilitet\n• Fuktsäkra lösningar som skyddar mot markfukt\n• Långsiktig hållbarhet och säkerhet för din byggnad\n\nVi tar hand om allt från markundersökning till färdig grund, och säkerställer att allt uppfyller byggnadskraven. Oavsett om det gäller nybyggnation, tillbyggnad eller grundförstärkning - vi har erfarenheten.",
       image: "/images/foundation_work/IMG_2201-min.jpg",
       galleryImages: [
+        "/images/foundation_work/IMG_2201-min.jpg",
         "/images/foundation_work/IMG_2310-min.jpg",
         "/images/foundation_work/IMG_2272-min.jpg",
         "/images/foundation_work/IMG_2332-min.jpg",
-        "/images/foundation_work/IMG_2201-min.jpg",
         "/images/foundation_work/IMG_5267-min.jpg",
         "/images/foundation_work/IMG_5301-min.jpg",
         "/images/foundation_work/IMG_5188-min.jpg",
@@ -108,10 +108,10 @@ const References = () => {
         "En välbyggd trall eller altan skapar ett fantastiskt utomhusutrymme för familjen. För dig innebär det:\n\n• Ett trivsamt uterum för avkoppling och umgänge\n• Ökat bostadsvärde och förbättrad livskvalitet\n• Underhållsfria material som tål väder året runt\n• Professionell nivåsättning och dränering\n• Räcken och trappor som är både säkra och vackra\n\nVi bygger allt från små uteplatser till stora altaner och pooltrallningar. Vi hjälper dig välja rätt material - oavsett om du föredrar traditionellt trä eller moderna kompositmaterial som kräver minimalt underhåll.",
       image: "/images/trolley/IMG_1788-min.jpeg",
       galleryImages: [
+        "/images/trolley/IMG_1788-min.jpeg",
         "/images/trolley/IMG_1254-min.jpeg",
         "/images/trolley/IMG_1265-min.jpeg",
         "/images/trolley/IMG_1268-min.jpeg",
-        "/images/trolley/IMG_1788-min.jpeg",
         "/images/trolley/IMG_3555-min.jpeg",
         "/images/trolley/IMG_3557-min.jpeg",
         "/images/trolley/IMG_3558-min.jpeg",
@@ -126,6 +126,7 @@ const References = () => {
         "En renovering kan förvandla ditt hem från grunden. Våra renoveringstjänster innebär för dig:\n\n• Modernisering av kök, badrum och andra utrymmen\n• Förbättrad planlösning som passar din livssituation\n• Uppdaterade el- och VVS-installationer enligt moderna standarder\n• Ökad energieffektivitet med nya isolerings- och ventilationslösningar\n• Högre fastighetsvärde och bättre boendekvalitet\n\nVi hanterar allt från mindre badrumsrenoveringar till totalrenoveringar av hela huset. Med vår erfarenhet guidar vi dig genom hela processen - från planering och design till färdigt resultat. Vi samordnar alla hantverkare så att projektet flyter på smidigt.",
       image: "/images/renovations/IMG_4639.jpeg",
       galleryImages: [
+        "/images/renovations/IMG_4639.jpeg",
         "/images/renovations/IMG_4437.jpeg",
         "/images/renovations/IMG_4543.jpeg",
         "/images/renovations/IMG_4667.jpeg",
@@ -152,15 +153,16 @@ const References = () => {
   } = useImageCarousel(currentGalleryLength);
 
   const handleOpen = (project, index) => {
+    // Always reset to first image when opening
+    setCurrentImageIndex(0);
+    
     // Only toggle accordion on mobile (xs), open modal on larger screens
     if (window.innerWidth < 600) {
       // Mobile: only toggle accordion, don't set selectedProject
       setExpandedMobile(expandedMobile === index ? null : index);
-      setCurrentImageIndex(0);
     } else {
       // Desktop: open modal
       setSelectedProject(project);
-      setCurrentImageIndex(0);
     }
   };
 
