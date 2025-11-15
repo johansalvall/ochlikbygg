@@ -155,7 +155,7 @@ const References = () => {
   return (
     <>
       <Box id="referenser" sx={{ py: 10, bgcolor: "white" }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3 } }}>
           <SectionTitle title="VÅRA TJÄNSTER" />
           <Grid
             container
@@ -244,6 +244,7 @@ const References = () => {
                       flexGrow: 1,
                       display: "flex",
                       flexDirection: "column",
+                      p: { xs: 1, sm: 2 },
                     }}
                   >
                     <Typography

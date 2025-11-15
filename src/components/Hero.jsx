@@ -74,7 +74,7 @@ const Hero = () => {
                   mb: 3,
                   WebkitTextStroke: "2px #2a2a2a",
                   textShadow: "2px 2px 4px rgba(0,0,0,0.5)",
-                  fontSize: { xs: "2rem", sm: "3rem", md: "4.5rem" },
+                  fontSize: { xs: "2.5rem", sm: "3rem", md: "4.5rem" },
                 }}
               >
                 DIN{" "}

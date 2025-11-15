@@ -77,7 +77,7 @@ const CTA = () => {
         py: { xs: 6, sm: 8, md: 10 },
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ px: { xs: 1.5, sm: 3 } }}>
         <Box
           component={motion.div}
           variants={fadeInUp}

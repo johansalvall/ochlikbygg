@@ -50,7 +50,7 @@ const Navigation = () => {
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                   sx={{
-                    height: { xs: "60px", sm: "80px", md: "100px", lg: "130px" },
+                    height: { xs: "80px", sm: "90px", md: "100px", lg: "130px" },
                     width: "auto",
                     cursor: "pointer",
                   }}

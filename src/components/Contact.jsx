@@ -80,7 +80,7 @@ const Contact = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          sx={{ justifyContent: "center" }}
+          sx={{ justifyContent: "center",}}
         >
           {contactInfo.map((info, index) => (
             <Grid item xs={12} sm={12} md={12} key={index}>
