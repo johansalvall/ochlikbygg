@@ -156,7 +156,7 @@ const CTA = () => {
               sx={{
                 bgcolor: "white",
                 p: { xs: 2, sm: 3, md: 4 },
-                borderRadius: 0,
+                borderRadius: 3,
                 height: "100%",
               }}
             >
@@ -269,6 +269,7 @@ const CTA = () => {
                       color: "white",
                       minWidth: { xs: "200px", sm: "300px" },
                       width: { xs: "100%", sm: "auto" },
+                      borderRadius: 2,
                       "&:hover": {
                         bgcolor: "#0d0d0d",
                       },
