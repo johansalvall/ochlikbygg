@@ -269,7 +269,7 @@ const CTA = () => {
                       color: "white",
                       minWidth: { xs: "200px", sm: "300px" },
                       width: { xs: "100%", sm: "auto" },
-                      borderRadius: 2,
+                      borderRadius: 8,
                       "&:hover": {
                         bgcolor: "#0d0d0d",
                       },

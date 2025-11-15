@@ -74,8 +74,8 @@ const Hero = () => {
                   mb: 3,
                   textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
                   fontSize: { xs: "2.5rem", sm: "3rem", md: "4.5rem" },
-                  fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif",
-                  fontWeight: 600,
+                  fontFamily: "'Poppins', 'Quicksand', 'Nunito', sans-serif",
+                  fontWeight: 500,
                 }}
               >
                 DIN BYGGPARTNER I MARKARYD
@@ -91,7 +91,7 @@ const Hero = () => {
                   color: "#fcfcfcff",
                   textShadow: "1px 1px 6px rgba(0,0,0,0.7)",
                   fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
-                  fontFamily: "'Inter', 'Segoe UI', 'Roboto', sans-serif",
+                  fontFamily: "'Poppins', 'Quicksand', 'Nunito', sans-serif",
                   fontWeight: 400,
                 }}
               >
@@ -118,7 +118,7 @@ const Hero = () => {
                   position="center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  sx={{ borderRadius: 2 }}
+                  sx={{ borderRadius: 8 }}
                 >
                   BEGÄR OFFERT
                 </Button>
@@ -133,7 +133,7 @@ const Hero = () => {
                     color: "white",
                     borderColor: "white",
                     borderWidth: "3px",
-                    borderRadius: 2,
+                    borderRadius: 8,
                     "&:hover": {
                       borderWidth: "3px",
                       bgcolor: "white",
