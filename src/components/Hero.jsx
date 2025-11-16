@@ -107,7 +107,7 @@ const Hero = () => {
                 sx={{
                   display: "flex",
                   gap: 2,
-                  flexDirection: "column",
+                  flexDirection: { xs: "column", sm: "row" },
                   justifyContent: "center",
                   alignItems: "center",
                 }}
