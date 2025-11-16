@@ -73,9 +73,9 @@ const Hero = () => {
                 sx={{
                   mb: 3,
                   textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
-                  fontSize: { xs: "2.5rem", sm: "3rem", md: "4.5rem" },
-                  fontFamily: "var(--typography-heading-bold), 'Montserrat', Helvetica, Arial, sans-serif",
-                  fontWeight: 500,
+                  fontSize: { xs: "2rem", sm: "2.5rem", md: "3.5rem" },
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: 700,
                 }}
               >
                 Din Byggpartner i Markaryd
@@ -90,9 +90,9 @@ const Hero = () => {
                   mb: 4,
                   color: "#fcfcfcff",
                   textShadow: "1px 1px 6px rgba(0,0,0,0.7)",
-                  fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
-                  fontFamily: "'Montserrat', Helvetica, Arial, sans-serif",
-                  fontWeight: 400,
+                  fontSize: { xs: "0.9rem", sm: "1.1rem", md: "1.25rem" },
+                  fontFamily: "'Poppins', sans-serif",
+                  fontWeight: 500,
                 }}
               >
                 Välkommen till Ochlik Bygg! Vi erbjuder professionella
@@ -107,8 +107,9 @@ const Hero = () => {
                 sx={{
                   display: "flex",
                   gap: 2,
-                  flexDirection: { xs: "column", sm: "row" },
+                  flexDirection: "column",
                   justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Button
@@ -118,7 +119,12 @@ const Hero = () => {
                   position="center"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  sx={{ borderRadius: 8 }}
+                  sx={{ 
+                    borderRadius: 8,
+                    fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                    py: { xs: 0.75, sm: 1 },
+                    px: { xs: 2, sm: 3 },
+                  }}
                 >
                   BEGÄR OFFERT
                 </Button>
@@ -134,6 +140,9 @@ const Hero = () => {
                     borderColor: "white",
                     borderWidth: "3px",
                     borderRadius: 8,
+                    fontSize: { xs: "0.8rem", sm: "0.9rem" },
+                    py: { xs: 0.75, sm: 1 },
+                    px: { xs: 2, sm: 3 },
                     "&:hover": {
                       borderWidth: "3px",
                       bgcolor: "white",
