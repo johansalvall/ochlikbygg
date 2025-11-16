@@ -74,11 +74,11 @@ const Hero = () => {
                   mb: 3,
                   textShadow: "2px 2px 8px rgba(0,0,0,0.7)",
                   fontSize: { xs: "2.5rem", sm: "3rem", md: "4.5rem" },
-                  fontFamily: "'Poppins', 'Quicksand', 'Nunito', sans-serif",
+                  fontFamily: "var(--typography-heading-bold), 'Montserrat', Helvetica, Arial, sans-serif",
                   fontWeight: 500,
                 }}
               >
-                DIN BYGGPARTNER I MARKARYD
+                Din Byggpartner i Markaryd
               </Typography>
               <Typography
                 variant="h5"
@@ -91,7 +91,7 @@ const Hero = () => {
                   color: "#fcfcfcff",
                   textShadow: "1px 1px 6px rgba(0,0,0,0.7)",
                   fontSize: { xs: "1rem", sm: "1.25rem", md: "1.5rem" },
-                  fontFamily: "'Poppins', 'Quicksand', 'Nunito', sans-serif",
+                  fontFamily: "'Montserrat', Helvetica, Arial, sans-serif",
                   fontWeight: 400,
                 }}
               >

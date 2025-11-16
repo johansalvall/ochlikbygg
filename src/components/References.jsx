@@ -10,13 +10,11 @@ import {
   Chip,
   Modal,
   IconButton,
-  Collapse,
 } from "@mui/material";
 import {
   Close as CloseIcon,
   ChevronLeft,
   ChevronRight,
-  ExpandMore,
 } from "@mui/icons-material";
 import SectionTitle from "./SectionTitle";
 import { fadeInUp, stagger } from "../animations/variants";
@@ -24,7 +22,6 @@ import { useImageCarousel } from "../hooks/useImageCarousel";
 
 const References = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [expandedMobile, setExpandedMobile] = useState(null);
 
   const projects = [
     {
@@ -138,11 +135,8 @@ const References = () => {
     },
   ];
 
-  // Get the current gallery length (for either mobile accordion or desktop modal)
-  const currentGalleryLength = 
-    expandedMobile !== null 
-      ? projects[expandedMobile]?.galleryImages?.length || 0
-      : selectedProject?.galleryImages?.length || 0;
+  // Get the current gallery length
+  const currentGalleryLength = selectedProject?.galleryImages?.length || 0;
 
   // Use custom carousel hook
   const {
@@ -152,23 +146,14 @@ const References = () => {
     goToIndex: setCurrentImageIndex,
   } = useImageCarousel(currentGalleryLength);
 
-  const handleOpen = (project, index) => {
+  const handleOpen = (project) => {
     // Always reset to first image when opening
     setCurrentImageIndex(0);
-    
-    // Only toggle accordion on mobile (xs), open modal on larger screens
-    if (window.innerWidth < 600) {
-      // Mobile: only toggle accordion, don't set selectedProject
-      setExpandedMobile(expandedMobile === index ? null : index);
-    } else {
-      // Desktop: open modal
-      setSelectedProject(project);
-    }
+    setSelectedProject(project);
   };
 
   const handleClose = () => {
     setSelectedProject(null);
-    setExpandedMobile(null);
     setCurrentImageIndex(0);
   };
 
@@ -188,7 +173,7 @@ const References = () => {
             sx={{ justifyContent: "center" }}
           >
             {projects.map((project, index) => (
-              <Grid xs={12} sm={6} md={4} key={index} sx={{ px: { xs: 0.625, sm: 0 } }}>
+              <Grid item xs={12} sm={6} md={4} key={index} sx={{ px: { xs: 0.625, sm: 0 } }}>
                 <Card
                   component={motion.div}
                   variants={fadeInUp}
@@ -208,166 +193,17 @@ const References = () => {
                     transition: "all 0.3s ease",
                   }}
                 >
-                  {/* Image box - show carousel on mobile when expanded, static image otherwise */}
+                  {/* Image box - click to open modal */}
                   <Box
-                    onClick={(e) => {
-                      if (expandedMobile !== index) {
-                        handleOpen(project, index);
-                      }
-                    }}
+                    onClick={() => handleOpen(project)}
                     sx={{
                       height: 300,
                       position: "relative",
                       overflow: "hidden",
                     }}
                   >
-                    {/* Show carousel on mobile when expanded */}
-                    {expandedMobile === index ? (
-                      <Box sx={{ display: { xs: "block", sm: "none" }, height: "100%", bgcolor: "#fff" }}>
-                        <AnimatePresence mode="wait">
-                          <motion.img
-                            key={currentImageIndex}
-                            src={project.galleryImages[currentImageIndex]}
-                            alt={`${project.title} projekt ${currentImageIndex + 1}`}
-                            drag="x"
-                            dragConstraints={{ left: 0, right: 0 }}
-                            dragElastic={0.2}
-                            onDragEnd={(e, { offset, velocity }) => {
-                              const swipe = Math.abs(offset.x) * velocity.x;
-                              if (swipe > 500) {
-                                handlePrevImage();
-                              } else if (swipe < -500) {
-                                handleNextImage();
-                              }
-                            }}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "contain",
-                              display: "block",
-                            }}
-                          />
-                        </AnimatePresence>
-
-                        <IconButton
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handlePrevImage();
-                          }}
-                          sx={{
-                            position: "absolute",
-                            left: 8,
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            bgcolor: "rgba(255, 255, 255, 0.9)",
-                            "&:hover": { bgcolor: "white" },
-                            zIndex: 10,
-                          }}
-                        >
-                          <ChevronLeft />
-                        </IconButton>
-
-                        <IconButton
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleNextImage();
-                          }}
-                          sx={{
-                            position: "absolute",
-                            right: 8,
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            bgcolor: "rgba(255, 255, 255, 0.9)",
-                            "&:hover": { bgcolor: "white" },
-                            zIndex: 10,
-                          }}
-                        >
-                          <ChevronRight />
-                        </IconButton>
-
-                        <Box
-                          sx={{
-                            position: "absolute",
-                            bottom: 8,
-                            left: "50%",
-                            transform: "translateX(-50%)",
-                            bgcolor: "rgba(0, 0, 0, 0.7)",
-                            color: "white",
-                            px: 2,
-                            py: 0.5,
-                            borderRadius: 2,
-                            fontSize: "0.85rem",
-                            fontWeight: 600,
-                            zIndex: 10,
-                          }}
-                        >
-                          {currentImageIndex + 1} / {project.galleryImages.length}
-                        </Box>
-
-                        {/* Thumbnail Gallery directly below main image */}
-                        {project.galleryImages && project.galleryImages.length > 1 && (
-                          <Box
-                            onClick={(e) => e.stopPropagation()}
-                            sx={{
-                              position: "absolute",
-                              bottom: 0,
-                              left: 0,
-                              right: 0,
-                              display: "flex",
-                              gap: 1,
-                              p: 1,
-                              bgcolor: "rgba(0, 0, 0, 0.5)",
-                              overflowX: "auto",
-                              zIndex: 10,
-                              "&::-webkit-scrollbar": {
-                                height: 4,
-                              },
-                              "&::-webkit-scrollbar-thumb": {
-                                bgcolor: "rgba(255, 255, 255, 0.5)",
-                                borderRadius: 2,
-                              },
-                            }}
-                          >
-                            {project.galleryImages.map((image, imgIndex) => (
-                              <Box
-                                key={imgIndex}
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setCurrentImageIndex(imgIndex);
-                                }}
-                                sx={{
-                                  width: 40,
-                                  height: 40,
-                                  flexShrink: 0,
-                                  backgroundImage: `url('${image}')`,
-                                  backgroundSize: "cover",
-                                  backgroundPosition: "center",
-                                  cursor: "pointer",
-                                  border: "2px solid",
-                                  borderRadius: 1,
-                                  borderColor:
-                                    currentImageIndex === imgIndex
-                                      ? "accent.main"
-                                      : "rgba(255, 255, 255, 0.5)",
-                                  opacity: currentImageIndex === imgIndex ? 1 : 0.7,
-                                  transition: "all 0.3s",
-                                  "&:hover": {
-                                    opacity: 1,
-                                    borderColor: "accent.main",
-                                  },
-                                }}
-                              />
-                            ))}
-                          </Box>
-                        )}
-                      </Box>
-                    ) : (
-                      /* Static image with overlay when not expanded */
-                      <Box
+                    {/* Static image with overlay */}
+                    <Box
                         sx={{
                           height: "100%",
                           backgroundImage: `url('${project.image}')`,
@@ -419,13 +255,9 @@ const References = () => {
                           </Typography>
                         </Box>
                       </Box>
-                    )}
                   </Box>
                   <CardContent
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOpen(project, index);
-                    }}
+                    onClick={() => handleOpen(project)}
                     sx={{
                       flexGrow: 1,
                       display: "flex",
@@ -440,59 +272,23 @@ const References = () => {
                     >
                       {project.description}
                     </Typography>
-                    <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
-                      <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
-                        {project.tags.map((tag, tagIndex) => (
-                          <Chip
-                            key={tagIndex}
-                            label={tag}
-                            sx={{
-                              bgcolor: "primary.main",
-                              color: "#ffffffff",
-                              fontWeight: 700,
-                              fontSize: "0.75rem",
-                              letterSpacing: "1px",
-                              border: "2px solid",
-                            }}
-                          />
-                        ))}
-                      </Box>
-                      <IconButton
-                        size="small"
-                        sx={{
-                          display: { xs: "block", sm: "none" },
-                          transform: expandedMobile === index ? "rotate(180deg)" : "rotate(0deg)",
-                          transition: "transform 0.3s",
-                        }}
-                      >
-                        <ExpandMore />
-                      </IconButton>
+                    <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
+                      {project.tags.map((tag, tagIndex) => (
+                        <Chip
+                          key={tagIndex}
+                          label={tag}
+                          sx={{
+                            bgcolor: "primary.main",
+                            color: "#ffffffff",
+                            fontWeight: 700,
+                            fontSize: "0.75rem",
+                            letterSpacing: "1px",
+                            border: "2px solid",
+                          }}
+                        />
+                      ))}
                     </Box>
                   </CardContent>
-
-                  {/* Accordion Expansion (Mobile Only) - Only show description */}
-                  <Collapse in={expandedMobile === index} timeout="auto" unmountOnExit>
-                    <Box
-                      onClick={(e) => e.stopPropagation()}
-                      onTouchStart={(e) => e.stopPropagation()}
-                      onTouchMove={(e) => e.stopPropagation()}
-                      sx={{
-                        display: { xs: "block", sm: "none" },
-                        bgcolor: "#f9f9f9",
-                        p: 3,
-                        pr: 1.5,
-                        borderTop: "1px solid #e0e0e0",
-                      }}
-                    >
-                      <Typography
-                        variant="body2"
-                        color="text.primary"
-                        sx={{ lineHeight: 1.7, whiteSpace: "pre-line", fontSize: "0.9rem" }}
-                      >
-                        {project.detailedDescription}
-                      </Typography>
-                    </Box>
-                  </Collapse>
                 </Card>
               </Grid>
             ))}
@@ -500,12 +296,12 @@ const References = () => {
         </Container>
       </Box>
 
-      {/* Modal (Desktop Only) */}
+      {/* Modal (All Screen Sizes) */}
       <Modal
         open={selectedProject !== null}
         onClose={handleClose}
         sx={{
-          display: { xs: "none", sm: "flex" },
+          display: "flex",
           alignItems: "center",
           justifyContent: "center",
           p: { xs: 0, sm: 2 },
@@ -528,11 +324,12 @@ const References = () => {
               <IconButton
                 onClick={handleClose}
                 sx={{
-                  position: "absolute",
-                  right: 8,
-                  top: 8,
-                  bgcolor: "rgba(255, 255, 255, 0.9)",
-                  zIndex: 1000,
+                  position: "fixed",
+                  right: { xs: 16, sm: 8 },
+                  top: { xs: 16, sm: 8 },
+                  bgcolor: "rgba(255, 255, 255, 0.95)",
+                  zIndex: 1300,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
                   "&:hover": {
                     bgcolor: "white",
                   },
