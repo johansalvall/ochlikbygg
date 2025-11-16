@@ -306,6 +306,19 @@ const References = () => {
           justifyContent: "center",
           p: { xs: 0, sm: 2 },
         }}
+        slotProps={{
+          backdrop: {
+            sx: {
+              position: "fixed",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              minHeight: "100vh",
+              minHeight: "100dvh", // Dynamic viewport height for mobile browsers
+            }
+          }
+        }}
       >
         <Box
           sx={{
@@ -313,7 +326,10 @@ const References = () => {
             maxWidth: { xs: "100%", sm: 900 },
             width: "100%",
             height: { xs: "100vh", sm: "auto" },
+            minHeight: { xs: "100vh", sm: "auto" },
+            minHeight: { xs: "100dvh", sm: "auto" }, // Dynamic viewport height
             maxHeight: { xs: "100vh", sm: "90vh" },
+            maxHeight: { xs: "100dvh", sm: "90vh" },
             overflow: "auto",
             position: "relative",
             outline: "none",
